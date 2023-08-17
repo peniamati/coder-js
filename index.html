@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco Libertad</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="shortcut icon" href="./img/favicon1.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <img src="./img/logo.png" alt="Logo de Banco Libertad">
+    <h1>Banco Libertad</h1>
+    <nav>
+      <ul>
+        <li><a href="#position">Posicion consolidada</a></li>
+        <li><a href="#cards">Tarjetas</a></li>
+        <li><a href="#investments">Inversiones</a></li>
+        <li><a href="#loans">Prestamos</a></li>
+        <li><a href="#help">Ayuda</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="position" id="position">
+      <h2>Posicion consolidada</h2>
+      <article class="position-article">
+        <h3>Cuenta Prueba123</h3>
+        <table>
+          <tr>
+            <td>Cuenta N°</td>
+            <td>$1234</td>
+          </tr>
+        </table>
+      </article>
+      <article class="position-article">
+        <h3>Cuenta PruebaCorriente123</h3>
+        <table>
+          <tr>
+            <td>Cuenta N°</td>
+            <td>$1234</td>
+          </tr>
+        </table>
+      </article>
+    </section>
+    <section class="cards" id="cards">
+      <h2>Tarjetas</h2>
+      <article class="cards-article">
+        <h3>Mastercard</h3>
+        <img src="./img/mastercard.jpg" alt="Mastercard">
+        <p>**** **** **** 1234</p>
+      </article>
+      <article class="cards-article">
+        <h3>Visa</h3>
+        <img src="./img/visa.webp" alt="Visa">
+        <p>**** **** **** 1234</p>
+    </section>
+    <section class="investments" id="investments">
+      <h2>Inversiones</h2>
+      <section>
+        <h3>Acciones</h3>
+        <article class="investments-article">
+          <h4>AR123</h4>
+          <p>Precio $1234 la unidad</p>
+          <button>Comprar</button>
+        </article>
+        <article class="investments-article">
+          <h4>AR1235</h4>
+          <p>Precio $1234 la unidad</p>
+          <button>Comprar</button>
+        </article>
+        <h3>Bonos</h3>
+        <article class="investments-article">
+          <h4>Bonar123</h4>
+          <p>Precio $1234 la unidad</p>
+          <button>Comprar</button>
+        </article>
+        <article class="investments-article">
+          <h4>Bonar1235</h4>
+          <p>Precio $1234 la unidad</p>
+          <button>Comprar</button>
+        </article>
+      </section>
+    </section>
+    <section class="loans" id="loans">
+      <h2>Prestamos</h2>
+      <article class="loans-article" id="loans-article">
+        <h3>Prestamo empleado publico</h3>
+        <p>Seleccione monto y duracion</p>
+        <button onclick="loan()">Monto y duracion</button>
+
+        <p id="loans-article-amount">
+          
+        </p>
+
+        <p id="loans-article-months">
+          
+        </p>
+
+        <p id="loans-article-total"></p>
+
+      </article>
+    </section>
+    <section class="help" id="help">
+      <h2>Ayuda</h2>
+      <article>
+        <h3>Preguntas frecuentes</h3>
+      </article>
+      <article>
+        <h3>Contáctanos</h3>
+      </article>
+    </section>
+  </main>
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="#position">Posicion consolidada</a></li>
+        <li><a href="#cards">Tarjetas</a></li>
+        <li><a href="#investments">Inversiones</a></li>
+        <li><a href="#loans">Prestamos</a></li>
+        <li><a href="#help">Ayuda</a></li>
+      </ul>
+    </nav>
+    <section class="contact">
+      <article>Telefono</article>
+      <article>Correo</article>
+      <article>Facebook</article>
+      <article>Twitter</article>
+      <article>Instagram</article>
+    </section>
+    <img src="./img/logo.png" alt="Logo de Super en casa">
+  </footer>
+  <script src="./js/main.js"></script>
+</body>
+</html>
