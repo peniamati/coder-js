@@ -1,5 +1,4 @@
 // El codigo comentado sera implementado en la version final del proyecto.
-
 function loan() {
   // let amount = document.getElementById("loans-article-amount");
 
@@ -51,7 +50,7 @@ Ingrese el monto del prestamo:\n$500000(500000)\n$1000000(1000000)"
 
   let articleTotal = "Total a pagar: $" + total;
 
-  let articleQuotaL = "Valor de la cuota: $" + quota;
+  let articleQuota = "Valor de la cuota: $" + quota;
 
   // p.appendChild(tax);
   // p.appendChild(articleTotal);
@@ -69,7 +68,7 @@ Ingrese el monto del prestamo:\n$500000(500000)\n$1000000(1000000)"
       "Cantidad de cuotas: " +
       monthsValue +
       "\n" +
-      articleQuotaL
+      articleQuota
   );
 }
 

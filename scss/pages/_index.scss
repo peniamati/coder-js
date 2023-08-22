@@ -17,6 +17,9 @@ main{
 .loans{
   @include contenedor-flex;
   display: none;
+
+  // El texto comentado sera utilizado para la entrega final
+  
   // & h2{
   //   width: 100%;
   //   text-align: center;
