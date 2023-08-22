@@ -81,24 +81,7 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-.loans h2 {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 1em;
-}
-.loans-article {
-  text-align: center;
-}
-.loans-article h3 {
-  margin-bottom: 0.5em;
-}
-.loans-article p {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-.loans-article p br {
-  margin-top: 0.5em;
+  display: none;
 }
 
 .help {
