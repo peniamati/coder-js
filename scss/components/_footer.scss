@@ -1,11 +1,18 @@
 footer{
   @include contenedor-flex(row, space-evenly, center);
+  position: relative;
   color: white;
   background-color: #2869ab;
+  z-index: 10;
   & h1{
     display: none;
   }
-  & nav{
+  & img{
+    width: 150px;
+  }
+}
+
+.footer-nav{
     & ul{
       @include contenedor-flex(column, space-evenly, center);
       list-style: none;
@@ -13,11 +20,11 @@ footer{
         & a{
           color: white;
           text-decoration: none;
+          &:hover{
+            background-color: white;
+            color: $background-color;
+          }
         }
       }
     }
-  }
-  & img{
-    width: 150px;
-  }
 }

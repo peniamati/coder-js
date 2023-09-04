@@ -1,20 +1,10 @@
 header{
   @include contenedor-flex;
   background-color: #2869ab;
+  width: 100%;
+  position: fixed;
+  top: 0;
   & h1{
     display: none;
-  }
-  & nav{
-    width: 100%;
-    & ul{
-      @include contenedor-flex(row, space-evenly, center);
-      list-style: none;
-      & li{
-        & a{
-          color: white;
-          text-decoration: none;
-        }
-      }
-    }
   }
 }

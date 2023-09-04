@@ -1,0 +1,25 @@
+.navbar{
+  background-color: $background-color;
+  width: 180px;
+  top: 171px;
+  position: fixed;
+  height: 100vh;
+  border-right: 1px solid black;
+  & ul{
+    padding: 0;
+    list-style: none;
+    & li{
+      margin: 0;
+      & a{
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 15px 20px;
+        &:hover{
+          background-color: white;
+          color: $background-color;
+        }
+      }
+    }
+  }
+}
