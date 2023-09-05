@@ -11,6 +11,7 @@ function bienvenido() {
   } else if (opcion == 2) {
     loan();
   }
+  repetir();
 }
 function loan() {
   // let amount = document.getElementById("loans-article-amount");
@@ -30,9 +31,9 @@ Ingrese el monto del prestamo:\n$500000(500000)\n$1000000(1000000)"
       )
     );
   }
-  amount.innerHTML = "Monto: $" + amountValue;
+  // amount.innerHTML = "Monto: $" + amountValue;
 
-  let months = document.getElementById("loans-article-months");
+  // let months = document.getElementById("loans-article-months");
 
   let monthsValue = parseInt(prompt("Ingrese el numero de meses:\n6\n12"));
 
@@ -41,7 +42,7 @@ Ingrese el monto del prestamo:\n$500000(500000)\n$1000000(1000000)"
     monthsValue = parseInt(prompt("Ingrese el numero de meses:\n6\n12"));
   }
 
-  months.innerHTML = "Meses: " + monthsValue;
+  // months.innerHTML = "Meses: " + monthsValue;
 
   let taxValue;
 
@@ -112,22 +113,71 @@ let portfolio = {
   ]
 }
 function investments(){
-  let opciones = [];
-  let contador = 1;
-  for (element in portfolio){
-    opciones.push(`${contador})${element.toUpperCase()}`);
-    contador++;
-  };
-  console.log(opciones);
+  let opciones = Object.keys(portfolio).map((element, index) => `${index + 1}) ${element.toUpperCase()}`).join("\n");
   let opcion = parseInt(prompt(`Elija el tipo de inversion:\n${opciones}`));
   while (opcion != 1 && opcion != 2) {
     alert("Ingrese una opcion valida");
     opcion = parseInt(prompt(`Elija el tipo de inversion:\n${opciones}`));
   }
   if (opcion == 1) {
-    
+    let mensaje = "Elija el nombre de su accion:\n";
+
+    for (let i = 0; i < portfolio['acciones'].length; i++) {
+      const accion = portfolio['acciones'][i];
+      mensaje += `Nombre: ${accion.nombre}, Precio: ${accion.precio}, Cantidad: ${accion.cantidad}\n`;
+    }
+
+    let comprar = prompt(mensaje);
+    let compro = false;
+    for (let i = 0; i < portfolio['acciones'].length; i++) {
+      const accion = portfolio['acciones'][i];
+      if (accion.nombre == comprar) {
+        compro = true;
+        break;
+      }
+    }
+    if (compro){
+      alert("Compra exitosa");
+    }
+    else{
+      alert("No existe esa accion");
+    }  
+  }
+  else if (opcion == 2) {
+    let mensaje = "Elija el nombre de su bono:\n";
+
+    for (let i = 0; i < portfolio['bonos'].length; i++) {
+      const bono = portfolio['bonos'][i];
+      mensaje += `Nombre: ${bono.nombre}, Precio: ${bono.precio}, Cantidad: ${bono.cantidad}\n`;
+    }
+
+    let comprar = prompt(mensaje);
+    let compro = false;
+    for (let i = 0; i < portfolio['bonos'].length; i++) {
+      const bono = portfolio['bonos'][i];
+      if (bono.nombre == comprar) {
+        compro = true;
+        break;
+      }
+    }
+    if (compro){
+      alert("Compra exitosa");
+    }
+    else{
+      alert("No existe ese bono");
+    }  
   }
 }
 
-// bienvenido();
-investments();
+function repetir(){
+  let repetir = prompt("¿Desea volver al menu?\nSI\nNO").toUpperCase();
+  while (repetir != "SI" && repetir != "NO"){
+    alert("Ingrese una opcion valida");
+    let repetir = prompt("¿Desea volver al menu?\nSI\nNO").toUpperCase();
+  }
+  if (repetir == "SI"){
+    bienvenido();
+  }
+}
+
+bienvenido();
