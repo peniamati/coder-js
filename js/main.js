@@ -1,17 +1,20 @@
 // El codigo comentado sera implementado en la version final del proyecto.
+// La idea del codigo es que al iniciar te permita elegir entre inversiones o prestamos
+// Luego dependiendo de la opcion se llama a la funcion correspondiente.
+// En el caso de inversiones se fuerza la busqueda por nombre para hacer el filtrado
+// Lo ideal seria trabajar de otra manera para no tener tanto codigo.
 
 function bienvenido() {
-  let opcion = parseInt(prompt("BIENVENIDO A SU BANCO LIBERTAD\nIngrese su opcion:\n1.Inversiones\n2.Prestamos"));
+  let opcion = parseInt(prompt("BIENVENIDO A BANCO LIBERTAD\nIngrese su opcion:\n1.Inversiones\n2.Prestamos"));
   while (opcion != 1 && opcion != 2) {
     alert("Ingrese una opcion valida");
-    opcion = parseInt(prompt("BIENVENIDO A SU BANCO LIBERTAD\nIngrese su opcion:\n1.Inversiones\n2.Prestamos"));
+    opcion = parseInt(prompt("BIENVENIDO A BANCO LIBERTAD\nIngrese su opcion:\n1.Inversiones\n2.Prestamos"));
   }
   if (opcion == 1) {
     investments();
   } else if (opcion == 2) {
     loan();
   }
-  repetir();
 }
 function loan() {
   // let amount = document.getElementById("loans-article-amount");
@@ -84,6 +87,7 @@ Ingrese el monto del prestamo:\n$500000(500000)\n$1000000(1000000)"
       "\n" +
       articleQuota
   );
+  repetir();
 }
 
 let portfolio = {
@@ -119,53 +123,10 @@ function investments(){
     alert("Ingrese una opcion valida");
     opcion = parseInt(prompt(`Elija el tipo de inversion:\n${opciones}`));
   }
-  if (opcion == 1) {
-    let mensaje = "Elija el nombre de su accion:\n";
-
-    for (let i = 0; i < portfolio['acciones'].length; i++) {
-      const accion = portfolio['acciones'][i];
-      mensaje += `Nombre: ${accion.nombre}, Precio: ${accion.precio}, Cantidad: ${accion.cantidad}\n`;
-    }
-
-    let comprar = prompt(mensaje);
-    let compro = false;
-    for (let i = 0; i < portfolio['acciones'].length; i++) {
-      const accion = portfolio['acciones'][i];
-      if (accion.nombre == comprar) {
-        compro = true;
-        break;
-      }
-    }
-    if (compro){
-      alert("Compra exitosa");
-    }
-    else{
-      alert("No existe esa accion");
-    }  
-  }
-  else if (opcion == 2) {
-    let mensaje = "Elija el nombre de su bono:\n";
-
-    for (let i = 0; i < portfolio['bonos'].length; i++) {
-      const bono = portfolio['bonos'][i];
-      mensaje += `Nombre: ${bono.nombre}, Precio: ${bono.precio}, Cantidad: ${bono.cantidad}\n`;
-    }
-
-    let comprar = prompt(mensaje);
-    let compro = false;
-    for (let i = 0; i < portfolio['bonos'].length; i++) {
-      const bono = portfolio['bonos'][i];
-      if (bono.nombre == comprar) {
-        compro = true;
-        break;
-      }
-    }
-    if (compro){
-      alert("Compra exitosa");
-    }
-    else{
-      alert("No existe ese bono");
-    }  
+  if (opcion == 1){
+    buy("acciones");
+  } else if (opcion == 2){
+    buy("bonos");
   }
 }
 
@@ -173,10 +134,48 @@ function repetir(){
   let repetir = prompt("¿Desea volver al menu?\nSI\nNO").toUpperCase();
   while (repetir != "SI" && repetir != "NO"){
     alert("Ingrese una opcion valida");
-    let repetir = prompt("¿Desea volver al menu?\nSI\nNO").toUpperCase();
+    repetir = prompt("¿Desea volver al menu?\nSI\nNO").toUpperCase();
   }
   if (repetir == "SI"){
     bienvenido();
+  }
+  else{
+    alert("Gracias por usar nuestros servicios!");
+  }
+}
+
+function buy(value){
+  let val = value;
+  let inversion;
+  if (value == "acciones"){
+    inversion = "accion";
+  }else if(value == "bonos"){
+    inversion = "bono";
+  }
+  let mensaje = `Elija el nombre de su ${inversion}:\n`;
+
+  for (let i = 0; i < portfolio[val].length; i++) {
+    const investment = portfolio[val][i];
+    mensaje += `Nombre: ${investment.nombre}, Precio: ${investment.precio}, Cantidad: ${investment.cantidad}\n`;
+  }
+  let comprar = prompt(mensaje);
+  let investment = portfolio[val].find(investment => investment.nombre == comprar);
+  
+  if (investment){
+    alert(`Compra de ${investment.nombre} exitosa`);
+  }
+  else{
+    alert(`No se encontro su ${inversion}`);
+    let repite = prompt("Desea comprar otra inversion?\nSI\nNO").toUpperCase();
+    while (repite != "SI" && repite != "NO"){
+      alert("Ingrese una opcion valida");
+      repite = prompt("Desea comprar otra inversion?\nSI\nNO");
+    }
+    if (repite == "SI"){
+      investments();
+    }else{
+      repetir();
+    }
   }
 }
 
