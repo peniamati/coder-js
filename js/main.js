@@ -144,6 +144,19 @@ function repetir(){
   }
 }
 
+function repeat_investment(){
+  let repite = prompt("Desea comprar otra inversion?\nSI\nNO").toUpperCase();
+  while (repite != "SI" && repite != "NO"){
+    alert("Ingrese una opcion valida");
+    repite = prompt("Desea comprar otra inversion?\nSI\nNO");
+  }
+  if (repite == "SI"){
+    investments();
+  }else{
+    repetir();
+  }
+}
+
 function buy(value){
   let val = value;
   let inversion;
@@ -163,19 +176,11 @@ function buy(value){
   
   if (investment){
     alert(`Compra de ${investment.nombre} exitosa`);
+    repeat_investment();
   }
   else{
     alert(`No se encontro su ${inversion}`);
-    let repite = prompt("Desea comprar otra inversion?\nSI\nNO").toUpperCase();
-    while (repite != "SI" && repite != "NO"){
-      alert("Ingrese una opcion valida");
-      repite = prompt("Desea comprar otra inversion?\nSI\nNO");
-    }
-    if (repite == "SI"){
-      investments();
-    }else{
-      repetir();
-    }
+    repeat_investment();
   }
 }
 
