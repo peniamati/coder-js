@@ -1,6 +1,8 @@
 footer{
   @include contenedor-flex(row, space-evenly, center);
-  position: relative;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   color: white;
   background-color: #2869ab;
   z-index: 10;

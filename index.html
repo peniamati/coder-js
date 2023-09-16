@@ -17,38 +17,17 @@
   </header>
   <nav class="navbar">
     <ul>
-      <li><a href="#position">Posicion consolidada</a></li>
-      <li><a href="#cards">Tarjetas</a></li>
-      <li><a href="#investments">Inversiones</a></li>
-      <li><a href="#loans">Prestamos</a></li>
-      <li><a href="#help">Ayuda</a></li>
+      <li><a href="#position" onclick="position()">Posicion consolidada</a></li>
+      <li><a href="#cards" onclick="cards()">Tarjetas</a></li>
+      <li><a href="#investments" onclick="investments()">Inversiones</a></li>
+      <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
+      <li><a href="#help" onclick="help()">Ayuda</a></li>
     </ul>
   </nav>
 
   <main>
-    <section class="position" id="position">
-      <h2>Posicion consolidada</h2>
-      <article class="position-article">
-        <h3>Cuenta Prueba123</h3>
-        <table>
-          <tr>
-            <td>Cuenta N°</td>
-            <td>$1234</td>
-          </tr>
-        </table>
-      </article>
-      <article class="position-article">
-        <h3>Cuenta PruebaCorriente123</h3>
-        <table>
-          <tr>
-            <td>Cuenta N°</td>
-            <td>$1234</td>
-          </tr>
-        </table>
-      </article>
-    </section>
+    <section class="position" id="position"></section>
     <section class="cards" id="cards">
-      <h2>Tarjetas</h2>
       <article class="cards-article">
         <h3>Mastercard</h3>
         <img src="./img/mastercard.jpg" alt="Mastercard">

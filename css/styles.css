@@ -50,7 +50,9 @@ footer {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   color: white;
   background-color: #2869ab;
   z-index: 10;
@@ -87,6 +89,10 @@ main {
   align-items: center;
   margin-left: 180px;
   margin-top: 175px;
+}
+
+.hide {
+  display: none;
 }
 
 .position {

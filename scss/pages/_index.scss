@@ -10,6 +10,10 @@ main{
   margin-top: 175px;
 }
 
+.hide{
+  display: none;
+}
+
 .position{
   @include contenedor-flex;
   width: 80%;
