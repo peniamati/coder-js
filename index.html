@@ -17,11 +17,11 @@
   </header>
   <nav class="navbar">
     <ul>
-      <li><a href="#position" onclick="position()">Posicion consolidada</a></li>
-      <li><a href="#cards" onclick="cards()">Tarjetas</a></li>
-      <li><a href="#investments" onclick="investments()">Inversiones</a></li>
+      <li><a href="#position" onclick="showPosition()">Posicion consolidada</a></li>
+      <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
+      <li><a href="#investments" onclick="showInvestments()">Inversiones</a></li>
       <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
-      <li><a href="#help" onclick="help()">Ayuda</a></li>
+      <li><a href="#help" onclick="showHelp()">Ayuda</a></li>
     </ul>
   </nav>
 
@@ -67,25 +67,7 @@
         </article>
       </section>
     </section>
-    <section class="loans" id="loans">
-      <h2>Prestamos</h2>
-      <article class="loans-article" id="loans-article">
-        <h3>Prestamo empleado publico</h3>
-        <p>Seleccione monto y duracion</p>
-        <button onclick="loan()">Monto y duracion</button>
-
-        <p id="loans-article-amount">
-          
-        </p>
-
-        <p id="loans-article-months">
-          
-        </p>
-
-        <p id="loans-article-total"></p>
-
-      </article>
-    </section>
+    <section class="loans" id="loans"></section>
     <section class="help" id="help">
       <h2>Ayuda</h2>
       <article class="help-article">
