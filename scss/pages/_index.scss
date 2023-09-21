@@ -1,7 +1,8 @@
-main{
+.mainNormal{
   @include contenedor-flex;
-  margin-left: 180px;
-  margin-top: 193px;
+  margin-top: 168px;
+  margin-left: 181px;
+  margin-bottom: 90px;
 }
 
 .hide{
@@ -23,6 +24,7 @@ main{
     display: flex;
     align-items: center;
     border: 1px solid black;
+    margin-bottom: 1em;
     padding: 0.5em;
     & h3 {
       margin-bottom: 0.5em;
@@ -54,6 +56,22 @@ main{
       width: 50%;
     }
   }
+  &-nav-ul{
+    list-style: none;
+    &-li{
+      margin-top: 1em;
+      &-a{
+        text-decoration: none;
+        background-color: $background-color;
+        color: white;
+        border: 1px solid black;
+      }
+      &-a:hover{
+        background-color: lightblue;
+        color: black;
+      }
+    }
+  }
 }
 
 .investments{
@@ -77,6 +95,11 @@ main{
     &-article{
       margin-bottom: 1em
     }
+  }
+  & button{
+    font-size: 1em;
+    padding: 5px;
+    border: 1px solid black;
   }
 }
 
@@ -104,26 +127,93 @@ main{
       margin-bottom: 1em;
     }
   } 
+  & button{
+    font-size: 1em;
+    padding: 5px;
+    border: 1px solid black;
+  }
 }
 
 .help{
   @include contenedor-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 80%;
-  text-align: center;
-  margin-bottom: 1em;
-  margin-top: 1em;
-  & h2{
-    width: 100%;
+  margin: 0 auto;
+  text-align: left;
+  padding: 20px;
+  &-h2 {
+    font-size: 2em;
+    color: #333; /* Color del texto */
   }
-  &-article{
-    margin-top: 1em;
-    width: 100%;
-    & h3{
-      width: 100%;
+  &-article {
+    text-align: center;
+    &-h3{
+      text-align: center;
       margin-bottom: 1em;
+      margin-top: 1em;
     }
+    &-a{
+      text-decoration: none;
+      background-color: $background-color;
+      color: #fff;
+      border: 1px solid black;
+      font-size: 1.2em;
+      &:hover {
+        background-color: lightblue;
+        color: black;
+      }
+    }
+    &-nav {
+      &-ul {
+        list-style: none;
+        padding: 0;
+        &-li {
+          text-align: center;
+          margin-top: 1em;
+          margin-bottom: 1em;
+          font-size: 1.2em;
+          &-a {
+            text-decoration: none;
+            background-color: $background-color;
+            color: white;
+            border: 1px solid black;
+            &:hover {
+              background-color: lightblue;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+    &-contact{
+        &-ul{
+          list-style: none;
+          &-li{
+            text-align: center;
+            margin-bottom: 1em;
+            &-a {
+              text-decoration: none;
+              background-color: $background-color;
+              color: white;
+              border: 1px solid black;
+              &:hover {
+                background-color: lightblue;
+                color: black;
+              }
+            }
+          }
+        }
+
+      }
   }
+  
 }
+
+
+
+
 
 .login{
   @include contenedor-flex;

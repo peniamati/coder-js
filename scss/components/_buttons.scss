@@ -1,0 +1,11 @@
+button{
+    background-color: $background-color;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    &:hover{
+        background-color: lightblue;
+        color: black;
+    }
+}

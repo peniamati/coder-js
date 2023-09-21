@@ -20,22 +20,11 @@
         }
       }
     }
-    & button{
-      background-color: $background-color;
-      color: white;
-      border: none;
-      font-size: 1.2em;
-      cursor: pointer;
-      &:hover{
-        background-color: white;
-        color: $background-color;
-      }
-    }
   }
   &-lateral{
     background-color: $background-color;
     width: 180px;
-    top: 193px;
+    top: 168px;
     position: fixed;
     height: 100vh;
     border-right: 1px solid black;

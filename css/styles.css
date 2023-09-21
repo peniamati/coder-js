@@ -17,6 +17,10 @@ header {
 header h1 {
   display: none;
 }
+header img {
+  width: 250px;
+  height: 125px;
+}
 
 .navbar-header {
   background-color: #2869ab;
@@ -44,21 +48,10 @@ header h1 {
   background-color: white;
   color: #2869ab;
 }
-.navbar-header button {
-  background-color: #2869ab;
-  color: white;
-  border: none;
-  font-size: 1.2em;
-  cursor: pointer;
-}
-.navbar-header button:hover {
-  background-color: white;
-  color: #2869ab;
-}
 .navbar-lateral {
   background-color: #2869ab;
   width: 180px;
-  top: 193px;
+  top: 168px;
   position: fixed;
   height: 100vh;
   border-right: 1px solid black;
@@ -79,6 +72,55 @@ header h1 {
 .navbar-lateral ul li a:hover {
   background-color: white;
   color: #2869ab;
+}
+
+.mainLogin {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 168px;
+  margin-left: 0;
+}
+
+.login-container {
+  text-align: center;
+}
+
+#login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+h1, h2 {
+  font-family: Arial, sans-serif;
+}
+
+input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  background-color: #004080;
 }
 
 .footer {
@@ -133,14 +175,27 @@ header h1 {
   color: #2869ab;
 }
 
-main {
+button {
+  background-color: #2869ab;
+  color: white;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+button:hover {
+  background-color: lightblue;
+  color: black;
+}
+
+.mainNormal {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-left: 180px;
-  margin-top: 193px;
+  margin-top: 168px;
+  margin-left: 181px;
+  margin-bottom: 90px;
 }
 
 .hide {
@@ -167,6 +222,7 @@ main {
   display: flex;
   align-items: center;
   border: 1px solid black;
+  margin-bottom: 1em;
   padding: 0.5em;
 }
 .position-article h3 {
@@ -198,6 +254,22 @@ main {
   min-width: 150px;
   width: 50%;
 }
+.cards-nav-ul {
+  list-style: none;
+}
+.cards-nav-ul-li {
+  margin-top: 1em;
+}
+.cards-nav-ul-li-a {
+  text-decoration: none;
+  background-color: #2869ab;
+  color: white;
+  border: 1px solid black;
+}
+.cards-nav-ul-li-a:hover {
+  background-color: lightblue;
+  color: black;
+}
 
 .investments {
   display: grid;
@@ -223,6 +295,11 @@ main {
 }
 .investments-section-article {
   margin-bottom: 1em;
+}
+.investments button {
+  font-size: 1em;
+  padding: 5px;
+  border: 1px solid black;
 }
 
 .loans {
@@ -254,6 +331,11 @@ main {
   width: 100%;
   margin-bottom: 1em;
 }
+.loans button {
+  font-size: 1em;
+  padding: 5px;
+  border: 1px solid black;
+}
 
 .help {
   display: flex;
@@ -261,21 +343,73 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  padding: 20px;
+}
+.help-h2 {
+  font-size: 2em;
+  color: #333; /* Color del texto */
+}
+.help-article {
+  text-align: center;
+}
+.help-article-h3 {
   text-align: center;
   margin-bottom: 1em;
   margin-top: 1em;
 }
-.help h2 {
-  width: 100%;
+.help-article-a {
+  text-decoration: none;
+  background-color: #2869ab;
+  color: #fff;
+  border: 1px solid black;
+  font-size: 1.2em;
 }
-.help-article {
+.help-article-a:hover {
+  background-color: lightblue;
+  color: black;
+}
+.help-article-nav-ul {
+  list-style: none;
+  padding: 0;
+}
+.help-article-nav-ul-li {
+  text-align: center;
   margin-top: 1em;
-  width: 100%;
-}
-.help-article h3 {
-  width: 100%;
   margin-bottom: 1em;
+  font-size: 1.2em;
+}
+.help-article-nav-ul-li-a {
+  text-decoration: none;
+  background-color: #2869ab;
+  color: white;
+  border: 1px solid black;
+}
+.help-article-nav-ul-li-a:hover {
+  background-color: lightblue;
+  color: black;
+}
+.help-article-contact-ul {
+  list-style: none;
+}
+.help-article-contact-ul-li {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.help-article-contact-ul-li-a {
+  text-decoration: none;
+  background-color: #2869ab;
+  color: white;
+  border: 1px solid black;
+}
+.help-article-contact-ul-li-a:hover {
+  background-color: lightblue;
+  color: black;
 }
 
 .login {

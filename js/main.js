@@ -52,38 +52,57 @@ const contactos = {
 
 function showLogin() {
   const seccion = document.getElementById("login");
+  const mainElement = document.getElementById("main");
+  mainElement.classList.add("mainLogin");
   hideNav();
   hideView(seccion);
   seccion.innerHTML = "";
+
   let login = document.createElement("form");
   login.id = "login-form";
+
+  let titulo = document.createElement("h1");
+  titulo.textContent = "Bienvenido a Banco Libertad";
+  login.appendChild(titulo);
+
+  let subtitulo = document.createElement("h2");
+  subtitulo.textContent =
+    "Donde tenes la libertad de hacer con tu plata lo que quieras";
+  login.appendChild(subtitulo);
+
   let username = document.createElement("input");
   username.id = "username";
   username.placeholder = "Usuario";
+
   let password = document.createElement("input");
   password.id = "password";
-  password.placeholder = "Contraseña";
+  password.placeholder = "Contraseña";
+  password.type = "password";
+
   let boton = document.createElement("button");
-  boton.innerHTML = "Login";
+  boton.innerHTML = "Iniciar Sesión";
+
   boton.onclick = function (event) {
     event.preventDefault(); // Esto evita que la página se recargue
     if (username.value == "juan" && password.value == "juan") {
       sessionStorage.setItem("usuario", username.value);
+      mainElement.classList.replace("mainLogin", "mainNormal");
       showNav();
       showPosition();
     } else if (username.value == "pepe" && password.value == "pepe") {
       sessionStorage.setItem("usuario", username.value);
+      mainElement.classList.replace("mainLogin", "mainNormal");
       showNav();
       showPosition();
     } else {
-      alert("Usuario o contraseña incorrectos");
+      alert("Usuario o contraseña incorrectos");
     }
   };
+
   login.appendChild(username);
   login.appendChild(password);
   login.appendChild(boton);
   seccion.appendChild(login);
-  
 }
 
 function showPosition() {
@@ -109,9 +128,12 @@ function showPosition() {
     article.appendChild(h3);
     let tipo = document.createElement("p");
     tipo.innerHTML = cuentas[cuenta]["tipo"];
+    let detalles = document.createElement("p");
+    detalles.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i></i>`;
     let balance = document.createElement("p");
     balance.innerHTML = "Saldo: $" + cuentas[cuenta]["saldo"];
     article.appendChild(tipo);
+    article.appendChild(detalles);
     article.appendChild(balance);
     position.appendChild(article);
   }
@@ -193,6 +215,8 @@ function loan(tasa, monto, plazo) {
     (monto * tasaConvertida) / (1 - Math.pow(1 + tasaConvertida, -plazo));
   let deuda = cuota * plazo;
 
+  alert("Prestamo solicitado con exito!");
+
   alert(
     "Tasa: " +
       tasa +
@@ -253,6 +277,8 @@ function buyInvestment(inver, cant) {
             portfolio[inversion][investment]["cantidad"] - cant;
           alert("Compra exitosa");
           showInvestments();
+        } else {
+          alert("No hay suficiente cantidad");
         }
       }
     }
@@ -285,14 +311,18 @@ function showCards() {
     p.innerHTML = tarjetas[card]["number"];
     article.appendChild(p);
     let nav = document.createElement("nav");
-    nav.id = "card-nav";
+    nav.className = "cards-nav";
+    nav.id = "cards-nav";
     let ul = document.createElement("ul");
-    ul.id = "card-nav-ul";
+    ul.className = "cards-nav-ul";
+    ul.id = "cards-nav-ul";
     for (let opcion in tarjetas[card]["opciones"]) {
       let li = document.createElement("li");
-      li.id = "card-nav-ul-li";
+      li.className = "cards-nav-ul-li";
+      li.id = "cards-nav-ul-li";
       let link = document.createElement("a");
-      link.id = "card-nav-ul-li-a";
+      link.className = "cards-nav-ul-li-a";
+      link.id = "cards-nav-ul-li-a";
       link.innerHTML = tarjetas[card]["opciones"][opcion];
       link.href = "#" + tarjetas[card]["opciones"][opcion];
       li.appendChild(link);
@@ -310,45 +340,69 @@ function showHelp() {
   hideView(help);
   let h2 = document.createElement("h2");
   h2.innerHTML = "Ayuda";
+  h2.className = "help-h2";
   help.appendChild(h2);
   article = document.createElement("article");
   article.className = "help-article";
   article.innerHTML = "";
   let h3 = document.createElement("h3");
   h3.innerHTML = "¿Necesitas ayuda?";
+  h3.className = "help-article-h3";
   article.appendChild(h3);
   let linkFrecuentes = document.createElement("a");
   linkFrecuentes.innerHTML = "Preguntas frecuentes";
-  linkFrecuentes.href = "#frequent";
+  linkFrecuentes.href = "#";
+  linkFrecuentes.id = "help-article-a";
+  linkFrecuentes.className = "help-article-a";
   let frecuentes = document.createElement("nav");
-  frecuentes.id = "frequent";
+  frecuentes.id = "help-article-nav";
+  frecuentes.className = "help-article-nav";
   let lista = document.createElement("ul");
+  lista.id = "help-article-nav-ul";
+  lista.className = "help-article-nav-ul";
   article.appendChild(linkFrecuentes);
   for (element in preguntas) {
     let li = document.createElement("li");
-    li.id = "help-nav-li";
+    li.id = "help-article-nav-ul-li";
+    li.className = "help-article-nav-ul-li";
     let linkPreguntas = document.createElement("a");
     linkPreguntas.innerHTML = preguntas[element];
     linkPreguntas.href = "#" + preguntas[element];
-    linkPreguntas.id = "help-nav-li-a";
+    linkPreguntas.id = "help-article-nav-ul-li-a";
+    linkPreguntas.className = "help-article-nav-ul-li-a";
     li.appendChild(linkPreguntas);
     lista.appendChild(li);
   }
   frecuentes.appendChild(lista);
+  lista.style.display = "none";
+  linkFrecuentes.addEventListener("click", function () {
+    if (lista.style.display === "none") {
+      lista.style.display = "block";
+    } else {
+      lista.style.display = "none";
+    }
+  });
   article.appendChild(frecuentes);
   let linkContacto = document.createElement("h3");
   linkContacto.innerHTML = "Contáctanos";
+  linkContacto.id = "help-article-h3";
+  linkContacto.className = "help-article-h3";
   let contacto = document.createElement("nav");
-  contacto.id = "contact";
+  contacto.id = "help-article-contact";
+  contacto.className = "help-article-contact";
   let listaContacto = document.createElement("ul");
+  listaContacto.id = "help-article-contact-ul";
+  listaContacto.className = "help-article-contact-ul";
   article.appendChild(linkContacto);
   for (element in contactos) {
     let li = document.createElement("li");
-    li.id = "help-nav-li";
+    li.id = "help-article-contact-ul-li";
+    li.className = "help-article-contact-ul-li";
     let linkContacto = document.createElement("a");
     linkContacto.innerHTML = element;
     linkContacto.href = contactos[element];
-    linkContacto.id = "help-nav-li-a";
+    linkContacto.id = "help-article-contact-ul-li-a";
+    linkContacto.className = "help-article-contact-ul-li-a";
     li.appendChild(linkContacto);
     listaContacto.appendChild(li);
   }
@@ -357,7 +411,7 @@ function showHelp() {
   help.appendChild(article);
 }
 
-function showNav(){
+function showNav() {
   const navbarHeader = document.getElementById("navbar-header");
   navbarHeader.classList.replace("hide", "navbar-header");
   const navbarLateral = document.getElementById("navbar-lateral");
@@ -368,7 +422,7 @@ function showNav(){
   footerContact.classList.replace("hide", "footer-contact");
 }
 
-function hideNav(){
+function hideNav() {
   const navbarHeader = document.getElementById("navbar-header");
   navbarHeader.classList.replace("navbar-header", "hide");
   const navbarLateral = document.getElementById("navbar-lateral");
@@ -379,8 +433,10 @@ function hideNav(){
   footerContact.classList.replace("footer-contact", "hide");
 }
 
-function logOut(){
+function logOut() {
   sessionStorage.removeItem("usuario");
+  const mainElement = document.getElementById("main");
+  mainElement.classList.remove("mainNormal");
   showLogin();
 }
 showLogin();
