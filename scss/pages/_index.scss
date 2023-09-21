@@ -1,6 +1,6 @@
 .mainNormal{
   @include contenedor-flex;
-  margin-top: 168px;
+  margin-top: 148px;
   margin-left: 181px;
   margin-bottom: 90px;
 }
@@ -15,12 +15,13 @@
   text-align: center;
   margin-bottom: 1em;
   margin-top: 1em;
+  border: 1px solid black;
   & h2 {
     width: 100%;
     margin-bottom: 1em;
   }
   &-article {
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: center;
     border: 1px solid black;
@@ -43,6 +44,7 @@
   text-align: center;
   margin-bottom: 1em;
   margin-top: 1em;
+  border: 1px solid black;
   & h2{
     grid-column: span 2;
     width: 100%;
@@ -60,6 +62,7 @@
     list-style: none;
     &-li{
       margin-top: 1em;
+      margin-bottom: 1em;
       &-a{
         text-decoration: none;
         background-color: $background-color;
@@ -76,8 +79,8 @@
 
 .investments{
   @include contenedor-grid;
-  width: 80%;
   text-align: center;
+  width: 50%;
   margin-bottom: 1em;
   margin-top: 1em;
   & h2{
@@ -85,21 +88,37 @@
     margin-bottom: 1em;
   }
   &-section{
+    @include contenedor-grid;
     width: 80%;
     justify-self: center;
-    border: 1px solid black;
     & h3{
-      width: 100%;
-      margin-bottom: 1em
+      grid-column: span 2;
+      margin-bottom: 1em;
     }
     &-article{
-      margin-bottom: 1em
+      grid-column: span 2;
+      border: 1px solid black;
+      margin-bottom: 1em;
+      & h4{
+        grid-column: span 2;
+        margin-bottom: 1em;
+        margin-top: 1em;
+      }
+  
+      & p{
+        grid-column: span 2;
+        margin-bottom: 1em
+      }
+      & button{
+        grid-column: span 2;
+        font-size: 1em;
+        justify-self: center;
+        padding: 5px;
+        border: 1px solid black;
+        margin-bottom: 1em
+      }
     }
-  }
-  & button{
-    font-size: 1em;
-    padding: 5px;
-    border: 1px solid black;
+    
   }
 }
 
@@ -115,23 +134,48 @@
     margin-bottom: 1em;
   }
   &-article{
-    width: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    text-align: center;
-    align-items: center;
+    @include contenedor-grid;
+    width: 50%;
+    justify-self: center;
+    border: 1px solid black;
     margin-bottom: 1em;
     & h3{
-      width: 100%;
+      grid-column: span 2;
       margin-bottom: 1em;
     }
-  } 
-  & button{
-    font-size: 1em;
-    padding: 5px;
-    border: 1px solid black;
+    &-p{
+      grid-column: span 2;
+      margin-bottom: 1em
+    }
+    & button{
+      grid-column: span 2;
+      font-size: 1em;
+      justify-self: center;
+      padding: 5px;
+      border: 1px solid black;
+      margin-bottom: 1em
+    }
+    &-months{
+      grid-column: span 2;
+      margin-bottom: 1em;
+      justify-self: center;
+      &-p{
+        display: inline;
+      }
+    }
+    &-amount{
+      grid-column: span 2;
+      margin-bottom: 1em;
+      justify-self: center;
+      &-p{
+        display: inline;
+      }
+    }
   }
+    
+  
+  
+  
 }
 
 .help{
@@ -143,6 +187,7 @@
   margin: 0 auto;
   text-align: left;
   padding: 20px;
+  border: 1px solid black;
   &-h2 {
     font-size: 2em;
     color: #333; /* Color del texto */
@@ -209,12 +254,4 @@
       }
   }
   
-}
-
-
-
-
-
-.login{
-  @include contenedor-flex;
 }

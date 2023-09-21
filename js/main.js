@@ -52,23 +52,32 @@ const contactos = {
 
 function showLogin() {
   const seccion = document.getElementById("login");
+  seccion.className = "login";
   const mainElement = document.getElementById("main");
   mainElement.classList.add("mainLogin");
   hideNav();
   hideView(seccion);
   seccion.innerHTML = "";
 
-  let login = document.createElement("form");
-  login.id = "login-form";
-
   let titulo = document.createElement("h1");
-  titulo.textContent = "Bienvenido a Banco Libertad";
-  login.appendChild(titulo);
+  titulo.innerHTML = "Bienvenido a Banco Libertad";
+  titulo.className = "login-h1";
+  seccion.appendChild(titulo);
+
+  let img = document.createElement("img");
+  img.src = "./img/logo.png";
+  img.className = "login-img";
+  seccion.appendChild(img);
 
   let subtitulo = document.createElement("h2");
-  subtitulo.textContent =
+  subtitulo.innerHTML =
     "Donde tenes la libertad de hacer con tu plata lo que quieras";
-  login.appendChild(subtitulo);
+  subtitulo.className = "login-h2";
+  seccion.appendChild(subtitulo);
+
+  let login = document.createElement("form");
+  login.id = "login-form";
+  login.className = "login-form";
 
   let username = document.createElement("input");
   username.id = "username";
@@ -161,19 +170,23 @@ function showLoans() {
   hideView(loans);
   let h2 = document.createElement("h2");
   h2.innerHTML = "Prestamos";
-  loans.appendChild(h2);
+  loans.appendChild(h2);  
   for (let prestamo in prestamos) {
     let article = document.createElement("article");
     article.className = "loans-article";
-    article.innerHTML = "";
     let h3 = document.createElement("h3");
     h3.innerHTML = prestamo;
     article.appendChild(h3);
     let tasa = document.createElement("p");
     tasa.innerHTML = "Tasa: " + prestamos[prestamo]["tasa"] + " %";
     tasa.value = prestamos[prestamo]["tasa"];
+    tasa.className = "loans-article-p";
+    let divMeses = document.createElement("div");
+    divMeses.className = "loans-article-months";
     let meses = document.createElement("p");
     meses.innerHTML = "Meses: ";
+    meses.className = "loans-article-months-p";
+    divMeses.appendChild(meses);
     let plazo = document.createElement("select");
     plazo.className = "loans-article-months";
     plazo.id = "loans-article-months";
@@ -183,8 +196,13 @@ function showLoans() {
       option.innerHTML = prestamos[prestamo]["plazo"][mes];
       plazo.appendChild(option);
     }
+    divMeses.appendChild(plazo);
+    let divMonto = document.createElement("div");
+    divMonto.className = "loans-article-amount";
     let value = document.createElement("p");
     value.innerHTML = "Monto: ";
+    value.className = "loans-article-amount-p";
+    divMonto.appendChild(value);
     let monto = document.createElement("select");
     monto.className = "loans-article-amount";
     monto.id = "loans-article-amount";
@@ -194,19 +212,19 @@ function showLoans() {
       option.innerHTML = prestamos[prestamo]["monto"][valor];
       monto.appendChild(option);
     }
+    divMonto.appendChild(monto);
     let boton = document.createElement("button");
     boton.innerHTML = "Confirmar";
     boton.onclick = function () {
       loan(tasa.value, monto.value, plazo.value);
     };
     article.appendChild(tasa);
-    article.appendChild(meses);
-    article.appendChild(plazo);
-    article.appendChild(value);
-    article.appendChild(monto);
+    article.appendChild(divMeses);
+    article.appendChild(divMonto);
     article.appendChild(boton);
     loans.appendChild(article);
   }
+ 
 }
 
 function loan(tasa, monto, plazo) {
@@ -239,14 +257,16 @@ function showInvestments() {
   h2.innerHTML = "Inversiones";
   investments.appendChild(h2);
   for (let investment in portfolio) {
-    let article = document.createElement("article");
-    article.className = "investments-article";
-    article.innerHTML = "";
+    let section = document.createElement("section");
+    section.className = "investments-section";
     let h3 = document.createElement("h3");
     h3.innerHTML = investment;
-    article.appendChild(h3);
-    investments.appendChild(article);
+    section.appendChild(h3);
+    investments.appendChild(section);
     for (let inversion in portfolio[investment]) {
+      let article = document.createElement("article");
+      article.className = "investments-section-article";
+      article.innerHTML = "";
       let h4 = document.createElement("h4");
       h4.innerHTML = inversion;
       let p = document.createElement("p");
@@ -264,7 +284,8 @@ function showInvestments() {
       article.appendChild(p);
       article.appendChild(cantidad);
       article.appendChild(boton);
-      investments.appendChild(article);
+      section.appendChild(article);
+      investments.appendChild(section);
     }
   }
 }
