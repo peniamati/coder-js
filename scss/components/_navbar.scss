@@ -1,25 +1,61 @@
 .navbar{
-  background-color: $background-color;
-  width: 180px;
-  top: 171px;
-  position: fixed;
-  height: 100vh;
-  border-right: 1px solid black;
-  & ul{
-    padding: 0;
-    list-style: none;
-    & li{
-      margin: 0;
-      & a{
-        display: block;
-        color: white;
-        text-decoration: none;
-        padding: 15px 20px;
-        &:hover{
-          background-color: white;
-          color: $background-color;
+  &-header{
+    background-color: $background-color;
+    width: 100%;
+    margin-left: 180px;
+    & ul{
+      @include contenedor-flex(row, space-evenly, center);
+      width: 100%;
+      list-style: none;
+      & li{
+        display: inline;
+        & a{
+          color: white;
+          text-decoration: none;
+          font-size: 1.2em;
+          &:hover{
+            background-color: white;
+            color: $background-color;
+          }
+        }
+      }
+    }
+    & button{
+      background-color: $background-color;
+      color: white;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      &:hover{
+        background-color: white;
+        color: $background-color;
+      }
+    }
+  }
+  &-lateral{
+    background-color: $background-color;
+    width: 180px;
+    top: 193px;
+    position: fixed;
+    height: 100vh;
+    border-right: 1px solid black;
+    & ul{
+      padding: 0;
+      list-style: none;
+      & li{
+        margin: 0;
+        & a{
+          display: block;
+          color: white;
+          text-decoration: none;
+          padding: 15px 20px;
+          &:hover{
+            background-color: white;
+            color: $background-color;
+          }
         }
       }
     }
   }
+  
 }

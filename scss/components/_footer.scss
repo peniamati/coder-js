@@ -1,4 +1,4 @@
-footer{
+.footer{
   @include contenedor-flex(row, space-evenly, center);
   position: fixed;
   width: 100%;
@@ -12,9 +12,7 @@ footer{
   & img{
     width: 150px;
   }
-}
-
-.footer-nav{
+  &-nav{
     & ul{
       @include contenedor-flex(column, space-evenly, center);
       list-style: none;
@@ -29,4 +27,22 @@ footer{
         }
       }
     }
+  }
+  &-contact{
+    & ul{
+      @include contenedor-flex(column, space-evenly, center);
+      list-style: none;
+      & li{
+        & a{
+          color: white;
+          text-decoration: none;
+          &:hover{
+            background-color: white;
+            color: $background-color;
+          }
+        }
+      }
+    }
+  }
 }
+

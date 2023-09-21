@@ -1,14 +1,3 @@
-const cuentas = {
-  cuentaPrueba123: {
-    tipo: "Caja de Ahorro",
-    saldo: 5500,
-  },
-  cuentaPrueba456: {
-    tipo: "Cuenta Corriente",
-    saldo: 0,
-  },
-};
-
 const prestamos = {
   Personal: {
     tasa: 120,
@@ -22,6 +11,81 @@ const prestamos = {
   },
 };
 
+const portfolio = {
+  Acciones: {
+    AR123: {
+      precio: 1234,
+      cantidad: 1,
+    },
+    AR1235: {
+      precio: 1234,
+      cantidad: 1,
+    },
+  },
+  Bonos: {
+    Bonar123: {
+      precio: 1234,
+      cantidad: 1,
+    },
+    Bonar1235: {
+      precio: 1234,
+      cantidad: 1,
+    },
+  },
+};
+
+const preguntas = {
+  1: "Como transferir dinero?",
+  2: "Como realizar un pago?",
+  3: "Como realizar un préstamo?",
+  4: "Como realizar una inversión?",
+  5: "Como consultar mi saldo?",
+};
+
+const contactos = {
+  Telefono: "tel:6031112298",
+  Email: "mailto:JY4yQ@example.com",
+  Facebook: "https://www.facebook.com",
+  Instagram: "https://www.instagram.com",
+  Twitter: "https://www.twitter.com",
+};
+
+function showLogin() {
+  const seccion = document.getElementById("login");
+  hideNav();
+  hideView(seccion);
+  seccion.innerHTML = "";
+  let login = document.createElement("form");
+  login.id = "login-form";
+  let username = document.createElement("input");
+  username.id = "username";
+  username.placeholder = "Usuario";
+  let password = document.createElement("input");
+  password.id = "password";
+  password.placeholder = "Contraseña";
+  let boton = document.createElement("button");
+  boton.innerHTML = "Login";
+  boton.onclick = function (event) {
+    event.preventDefault(); // Esto evita que la página se recargue
+    if (username.value == "juan" && password.value == "juan") {
+      sessionStorage.setItem("usuario", username.value);
+      showNav();
+      showPosition();
+    } else if (username.value == "pepe" && password.value == "pepe") {
+      sessionStorage.setItem("usuario", username.value);
+      showNav();
+      showPosition();
+    } else {
+      alert("Usuario o contraseña incorrectos");
+    }
+  };
+  login.appendChild(username);
+  login.appendChild(password);
+  login.appendChild(boton);
+  seccion.appendChild(login);
+  
+}
+
 function showPosition() {
   let position = document.getElementById("position");
   position.innerHTML = "";
@@ -29,6 +93,13 @@ function showPosition() {
   let h2 = document.createElement("h2");
   h2.innerHTML = "Posicion consolidada";
   position.appendChild(h2);
+  let usuario = sessionStorage.getItem("usuario");
+  let cuentas;
+  if (usuario == "juan") {
+    cuentas = cuentasJuan;
+  } else if (usuario == "pepe") {
+    cuentas = cuentasPepe;
+  }
   for (let cuenta in cuentas) {
     let article = document.createElement("article");
     article.className = "position-article";
@@ -57,9 +128,10 @@ function hideView(visible) {
   investments.classList.replace("investments", "hide");
   const help = document.getElementById("help");
   help.classList.replace("help", "hide");
+  const login = document.getElementById("login");
+  login.classList.replace("login", "hide");
   visible.classList.replace("hide", visible.id);
 }
-
 
 function showLoans() {
   const loans = document.getElementById("loans");
@@ -135,29 +207,6 @@ function loan(tasa, monto, plazo) {
   );
 }
 
-let portfolio = {
-  "Acciones": {
-    "AR123": {
-      precio: 1234,
-      cantidad: 1,
-    },
-    "AR1235": {
-      precio: 1234,
-      cantidad: 1,
-    },
-  },
-  "Bonos": {
-    "Bonar123": {
-      precio: 1234,
-      cantidad: 1,
-    },
-    "Bonar1235": {
-      precio: 1234,
-      cantidad: 1,
-    },
-  },
-};
-
 function showInvestments() {
   const investments = document.getElementById("investments");
   investments.innerHTML = "";
@@ -179,13 +228,14 @@ function showInvestments() {
       let p = document.createElement("p");
       p.innerHTML = "Precio: $" + portfolio[investment][inversion]["precio"];
       let cantidad = document.createElement("p");
-      cantidad.innerHTML = "Cantidad: " + portfolio[investment][inversion]["cantidad"];
+      cantidad.innerHTML =
+        "Cantidad: " + portfolio[investment][inversion]["cantidad"];
       cantidad.value = portfolio[investment][inversion]["cantidad"];
       let boton = document.createElement("button");
       boton.innerHTML = "Comprar";
-      boton.onclick = function (){
+      boton.onclick = function () {
         buyInvestment(inversion, cantidad.value);
-      }
+      };
       article.appendChild(h4);
       article.appendChild(p);
       article.appendChild(cantidad);
@@ -195,69 +245,142 @@ function showInvestments() {
   }
 }
 function buyInvestment(inver, cant) {
-  for (let inversion in portfolio){
-    for (let investment in portfolio[inversion]){
-      if (investment == inver){
+  for (let inversion in portfolio) {
+    for (let investment in portfolio[inversion]) {
+      if (investment == inver) {
         if (cant > 0 && cant <= portfolio[inversion][investment]["cantidad"]) {
-          portfolio[inversion][investment]["cantidad"] = portfolio[inversion][investment]["cantidad"] - cant;
+          portfolio[inversion][investment]["cantidad"] =
+            portfolio[inversion][investment]["cantidad"] - cant;
           alert("Compra exitosa");
           showInvestments();
-        } 
+        }
       }
     }
   }
 }
 
-function repetir() {
-  // let repetir = prompt("¿Desea volver al menu?\nSI\nNO").toUpperCase();
-  // while (repetir != "SI" && repetir != "NO"){
-  //   alert("Ingrese una opcion valida");
-  //   repetir = prompt("¿Desea volver al menu?\nSI\nNO").toUpperCase();
-  // }
-  // if (repetir == "SI"){
-  //   bienvenido();
-  // }
-  // else{
-  //   alert("Gracias por usar nuestros servicios!");
-  // }
+function showCards() {
+  const seccion = document.getElementById("cards");
+  seccion.innerHTML = "";
+  hideView(cards);
+  let h2 = document.createElement("h2");
+  h2.innerHTML = "Tarjetas";
+  seccion.appendChild(h2);
+  if (sessionStorage.getItem("usuario") == "juan") {
+    tarjetas = tarjetasJuan;
+  } else if (sessionStorage.getItem("usuario") == "pepe") {
+    tarjetas = tarjetasPepe;
+  }
+  for (let card in tarjetas) {
+    let article = document.createElement("article");
+    article.className = "cards-article";
+    article.innerHTML = "";
+    let h3 = document.createElement("h3");
+    h3.innerHTML = card;
+    article.appendChild(h3);
+    let img = document.createElement("img");
+    img.src = "./img/" + card + ".jpg";
+    article.appendChild(img);
+    let p = document.createElement("p");
+    p.innerHTML = tarjetas[card]["number"];
+    article.appendChild(p);
+    let nav = document.createElement("nav");
+    nav.id = "card-nav";
+    let ul = document.createElement("ul");
+    ul.id = "card-nav-ul";
+    for (let opcion in tarjetas[card]["opciones"]) {
+      let li = document.createElement("li");
+      li.id = "card-nav-ul-li";
+      let link = document.createElement("a");
+      link.id = "card-nav-ul-li-a";
+      link.innerHTML = tarjetas[card]["opciones"][opcion];
+      link.href = "#" + tarjetas[card]["opciones"][opcion];
+      li.appendChild(link);
+      ul.appendChild(li);
+    }
+    nav.appendChild(ul);
+    article.appendChild(nav);
+    seccion.appendChild(article);
+  }
 }
 
-function repeat_investment() {
-  // let repite = prompt("Desea comprar otra inversion?\nSI\nNO").toUpperCase();
-  // while (repite != "SI" && repite != "NO"){
-  //   alert("Ingrese una opcion valida");
-  //   repite = prompt("Desea comprar otra inversion?\nSI\nNO");
-  // }
-  // if (repite == "SI"){
-  //   investments();
-  // }else{
-  //   repetir();
-  // }
+function showHelp() {
+  const help = document.getElementById("help");
+  help.innerHTML = "";
+  hideView(help);
+  let h2 = document.createElement("h2");
+  h2.innerHTML = "Ayuda";
+  help.appendChild(h2);
+  article = document.createElement("article");
+  article.className = "help-article";
+  article.innerHTML = "";
+  let h3 = document.createElement("h3");
+  h3.innerHTML = "¿Necesitas ayuda?";
+  article.appendChild(h3);
+  let linkFrecuentes = document.createElement("a");
+  linkFrecuentes.innerHTML = "Preguntas frecuentes";
+  linkFrecuentes.href = "#frequent";
+  let frecuentes = document.createElement("nav");
+  frecuentes.id = "frequent";
+  let lista = document.createElement("ul");
+  article.appendChild(linkFrecuentes);
+  for (element in preguntas) {
+    let li = document.createElement("li");
+    li.id = "help-nav-li";
+    let linkPreguntas = document.createElement("a");
+    linkPreguntas.innerHTML = preguntas[element];
+    linkPreguntas.href = "#" + preguntas[element];
+    linkPreguntas.id = "help-nav-li-a";
+    li.appendChild(linkPreguntas);
+    lista.appendChild(li);
+  }
+  frecuentes.appendChild(lista);
+  article.appendChild(frecuentes);
+  let linkContacto = document.createElement("h3");
+  linkContacto.innerHTML = "Contáctanos";
+  let contacto = document.createElement("nav");
+  contacto.id = "contact";
+  let listaContacto = document.createElement("ul");
+  article.appendChild(linkContacto);
+  for (element in contactos) {
+    let li = document.createElement("li");
+    li.id = "help-nav-li";
+    let linkContacto = document.createElement("a");
+    linkContacto.innerHTML = element;
+    linkContacto.href = contactos[element];
+    linkContacto.id = "help-nav-li-a";
+    li.appendChild(linkContacto);
+    listaContacto.appendChild(li);
+  }
+  contacto.appendChild(listaContacto);
+  article.appendChild(contacto);
+  help.appendChild(article);
 }
 
-function buy(value) {
-  // let val = value;
-  // let inversion;
-  // if (value == "acciones"){
-  //   inversion = "accion";
-  // }else if(value == "bonos"){
-  //   inversion = "bono";
-  // }
-  // let mensaje = `Elija el nombre de su ${inversion}:\n`;
-  // for (let i = 0; i < portfolio[val].length; i++) {
-  //   const investment = portfolio[val][i];
-  //   mensaje += `Nombre: ${investment.nombre}, Precio: ${investment.precio}, Cantidad: ${investment.cantidad}\n`;
-  // }
-  // let comprar = prompt(mensaje);
-  // let investment = portfolio[val].find(investment => investment.nombre == comprar);
-  // if (investment){
-  //   alert(`Compra de ${investment.nombre} exitosa`);
-  //   repeat_investment();
-  // }
-  // else{
-  //   alert(`No se encontro su ${inversion}`);
-  //   repeat_investment();
-  // }
+function showNav(){
+  const navbarHeader = document.getElementById("navbar-header");
+  navbarHeader.classList.replace("hide", "navbar-header");
+  const navbarLateral = document.getElementById("navbar-lateral");
+  navbarLateral.classList.replace("hide", "navbar-lateral");
+  const footerNav = document.getElementById("footer-nav");
+  footerNav.classList.replace("hide", "footer-nav");
+  const footerContact = document.getElementById("footer-contact");
+  footerContact.classList.replace("hide", "footer-contact");
 }
 
-showPosition();
+function hideNav(){
+  const navbarHeader = document.getElementById("navbar-header");
+  navbarHeader.classList.replace("navbar-header", "hide");
+  const navbarLateral = document.getElementById("navbar-lateral");
+  navbarLateral.classList.replace("navbar-lateral", "hide");
+  const footerNav = document.getElementById("footer-nav");
+  footerNav.classList.replace("footer-nav", "hide");
+  const footerContact = document.getElementById("footer-contact");
+  footerContact.classList.replace("footer-contact", "hide");
+}
+
+function logOut(){
+  sessionStorage.removeItem("usuario");
+  showLogin();
+}
+showLogin();

@@ -10,12 +10,21 @@
   <meta name="description" content="Banco Libertad el banco donde tus sueños se hacen realidad">
 </head>
 <body>
-  <!-- Esta presentada la estructura pero en esta primer entrega se oculta con scss -->
   <header>
     <img src="./img/logo.png" alt="Logo de Banco Libertad">
     <h1>Banco Libertad</h1>
+    <nav class="navbar-header" id="navbar-header">
+      <ul>
+        <li><a href="#position" onclick="showPosition()">Posicion consolidada</a></li>
+        <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
+        <li><a href="#investments" onclick="showInvestments()">Inversiones</a></li>
+        <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
+        <li><a href="#help" onclick="showHelp()">Ayuda</a></li>
+        <li><button onclick="logOut()">Logout</button></li>
+      </ul>
+    </nav>
   </header>
-  <nav class="navbar">
+  <nav class="navbar-lateral" id="navbar-lateral">
     <ul>
       <li><a href="#position" onclick="showPosition()">Posicion consolidada</a></li>
       <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
@@ -26,87 +35,35 @@
   </nav>
 
   <main>
+    <section class="login" id="login"></section>
     <section class="position" id="position"></section>
-    <section class="cards" id="cards">
-      <article class="cards-article">
-        <h3>Mastercard</h3>
-        <img src="./img/mastercard.jpg" alt="Mastercard">
-        <p>**** **** **** 1234</p>
-      </article>
-      <article class="cards-article">
-        <h3>Visa</h3>
-        <img src="./img/visa.jpg" alt="Visa">
-        <p>**** **** **** 1234</p>
-    </section>
-    <section class="investments" id="investments">
-      <h2>Inversiones</h2>
-      <section class="investments-section">
-        <h3>Acciones</h3>
-        <article class="investments-section-article">
-          <h4>AR123</h4>
-          <p>Precio $1234 la unidad</p>
-          <button>Comprar</button>
-        </article>
-        <article class="investments-section-article">
-          <h4>AR1235</h4>
-          <p>Precio $1234 la unidad</p>
-          <button>Comprar</button>
-        </article>
-      </section>
-      <section class="investments-section">
-        <h3>Bonos</h3>
-        <article class="investments-section-article">
-          <h4>Bonar123</h4>
-          <p>Precio $1234 la unidad</p>
-          <button>Comprar</button>
-        </article>
-        <article class="investments-section-article">
-          <h4>Bonar1235</h4>
-          <p>Precio $1234 la unidad</p>
-          <button>Comprar</button>
-        </article>
-      </section>
-    </section>
+    <section class="cards" id="cards"></section>
+    <section class="investments" id="investments"></section>
     <section class="loans" id="loans"></section>
-    <section class="help" id="help">
-      <h2>Ayuda</h2>
-      <article class="help-article">
-        <h3>Preguntas frecuentes</h3>
-        <p>Claves</p>
-        <p>Denuncias por robo o pérdida</p>
-        <p>Desconocimientos de consumos</p>
-        <p>Fraude Informático</p>
-        <p>Errores al operar</p>
-        <p>Operar desde el exterior</p>
-      </article>
-      <article class="help-article">
-        <h3>Contáctanos</h3>
-        <a href="https://www.facebook.com">Facebook</a>
-        <a href="https://www.instagram.com">Instagram</a>
-        <a href="https://www.twitter.com">Twitter</a>
-        <a href="https://www.whatsapp.com">Whatsapp</a>
-      </article>
-    </section>
+    <section class="help" id="help"></section>
   </main>
-  <footer>
-    <nav class="footer-nav">
+  <footer class="footer">
+    <nav class="footer-nav" id="footer-nav">
       <ul>
-        <li><a href="#position">Posicion consolidada</a></li>
-        <li><a href="#cards">Tarjetas</a></li>
-        <li><a href="#investments">Inversiones</a></li>
-        <li><a href="#loans">Prestamos</a></li>
-        <li><a href="#help">Ayuda</a></li>
+        <li><a href="#position" onclick="showPosition()">Posicion consolidada</a></li>
+        <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
+        <li><a href="#investments" onclick="showInvestments()">Inversiones</a></li>
+        <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
+        <li><a href="#help" onclick="showHelp()">Ayuda</a></li>
       </ul>
     </nav>
-    <section class="contact">
-      <article>Telefono</article>
-      <article>Correo</article>
-      <article>Facebook</article>
-      <article>Twitter</article>
-      <article>Instagram</article>
-    </section>
+    <nav class="footer-contact" id="footer-contact">
+      <ul>
+        <li><a href="tel:6031112298">Telefono</a></li>
+        <li><a href="mailto:JY4yQ@example.com">Email</a></li>
+        <li><a href="https://www.facebook.com">Facebook</a></li>
+        <li><a href="https://www.twitter.com">Twitter</a></li>
+        <li><a href="https://www.instagram.com">Instagram</a></li>
+      </ul>
+    </nav>
     <img src="./img/logo.png" alt="Logo de Super en casa">
   </footer>
+  <script src="./js/divisas.js"></script>
   <script src="./js/main.js"></script>
 </body>
 </html>
