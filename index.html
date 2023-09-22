@@ -1,70 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="Banco Libertad, prestamos, inversiones, tarjetas, ayuda">
-  <meta name="description" content="Banco Libertad el banco donde tus sueños se hacen realidad">
-  <title>Banco Libertad</title>
-  <link rel="shortcut icon" href="./img/favicon1.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
-  <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
-  <header>
-    <img src="./img/logo.png" alt="Logo de Banco Libertad">
-    <h1>Banco Libertad</h1>
-    <nav class="navbar-header" id="navbar-header">
-      <ul>
-        <li><a href="#position" onclick="showPosition()">Posicion consolidada</a></li>
-        <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
-        <li><a href="#investments" onclick="showInvestments()">Inversiones</a></li>
-        <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
-        <li><a href="#help" onclick="showHelp()">Ayuda</a></li>
-        <li><button onclick="logOut()">Logout</button></li>
-      </ul>
-    </nav>
-  </header>
-  <nav class="navbar-lateral" id="navbar-lateral">
-    <ul>
-      <li><a href="#position" onclick="showPosition()">Posicion consolidada</a></li>
-      <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
-      <li><a href="#investments" onclick="showInvestments()">Inversiones</a></li>
-      <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
-      <li><a href="#help" onclick="showHelp()">Ayuda</a></li>
-    </ul>
-  </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="Banco Libertad, prestamos, inversiones, tarjetas, ayuda"
+    />
+    <meta
+      name="description"
+      content="Banco Libertad el banco donde tus sueños se hacen realidad"
+    />
+    <title>Banco Libertad</title>
+    <link rel="shortcut icon" href="./img/favicon1.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <header>
+      <img src="./img/logo.png" alt="Logo de Banco Libertad" />
+      <h1>Banco Libertad</h1>
+      <!-- Barra de navegación principal -->
+      <nav class="navbar-header" id="navbar-header">
+        <ul>
+          <li>
+            <a href="#position" onclick="showPosition()"
+              >Posicion consolidada</a
+            >
+          </li>
+          <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
+          <li>
+            <a href="#investments" onclick="showInvestments()">Inversiones</a>
+          </li>
+          <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
+          <li><a href="#help" onclick="showHelp()">Ayuda</a></li>
+          <li><button onclick="logOut()">Logout</button></li>
+        </ul>
+      </nav>
+    </header>
 
-  <main class="main" id="main">
-    <section class="login" id="login"></section>
-    <section class="position" id="position"></section>
-    <section class="cards" id="cards"></section>
-    <section class="investments" id="investments"></section>
-    <section class="loans" id="loans"></section>
-    <section class="help" id="help"></section>
-  </main>
-  <footer class="footer">
-    <nav class="footer-nav" id="footer-nav">
+    <!-- Barra de navegación lateral -->
+    <nav class="navbar-lateral" id="navbar-lateral">
       <ul>
-        <li><a href="#position" onclick="showPosition()">Posicion consolidada</a></li>
+        <li>
+          <a href="#position" onclick="showPosition()">Posicion consolidada</a>
+        </li>
         <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
-        <li><a href="#investments" onclick="showInvestments()">Inversiones</a></li>
+        <li>
+          <a href="#investments" onclick="showInvestments()">Inversiones</a>
+        </li>
         <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
         <li><a href="#help" onclick="showHelp()">Ayuda</a></li>
       </ul>
     </nav>
-    <nav class="footer-contact" id="footer-contact">
-      <ul>
-        <li><a href="tel:6031112298">Telefono</a></li>
-        <li><a href="mailto:JY4yQ@example.com">Email</a></li>
-        <li><a href="https://www.facebook.com">Facebook</a></li>
-        <li><a href="https://www.twitter.com">Twitter</a></li>
-        <li><a href="https://www.instagram.com">Instagram</a></li>
-      </ul>
-    </nav>
-    <img src="./img/logo.png" alt="Logo de Super en casa">
-  </footer>
-  <script src="./js/divisas.js"></script>
-  <script src="./js/main.js"></script>
-</body>
+
+    <!-- Contenido principal -->
+    <main class="main" id="main">
+      <section class="login" id="login"></section>
+      <section class="position" id="position"></section>
+      <section class="cards" id="cards"></section>
+      <section class="investments" id="investments"></section>
+      <section class="loans" id="loans"></section>
+      <section class="help" id="help"></section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+      <!-- Enlaces de navegación del pie de página -->
+      <nav class="footer-nav" id="footer-nav">
+        <ul>
+          <li>
+            <a href="#position" onclick="showPosition()"
+              >Posicion consolidada</a
+            >
+          </li>
+          <li><a href="#cards" onclick="showCards()">Tarjetas</a></li>
+          <li>
+            <a href="#investments" onclick="showInvestments()">Inversiones</a>
+          </li>
+          <li><a href="#loans" onclick="showLoans()">Prestamos</a></li>
+          <li><a href="#help" onclick="showHelp()">Ayuda</a></li>
+        </ul>
+      </nav>
+
+      <!-- Información de contacto en el pie de página -->
+      <nav class="footer-contact" id="footer-contact">
+        <ul>
+          <li><a href="tel:6031112298">Telefono</a></li>
+          <li><a href="mailto:JY4yQ@example.com">Email</a></li>
+          <li><a href="https://www.facebook.com">Facebook</a></li>
+          <li><a href="https://www.twitter.com">Twitter</a></li>
+          <li><a href="https://www.instagram.com">Instagram</a></li>
+        </ul>
+      </nav>
+
+      <!-- Logo en el pie de página -->
+      <img src="./img/logo.png" alt="Logo de Super en casa" />
+    </footer>
+
+    <!-- Script para el comportamiento de la página -->
+    <script src="./js/main.js"></script>
+  </body>
 </html>

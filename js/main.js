@@ -1,3 +1,4 @@
+// Definición de tipos de préstamos con tasas, plazos y montos
 const prestamos = {
   Personal: {
     tasa: 120,
@@ -11,6 +12,7 @@ const prestamos = {
   },
 };
 
+// Definición de un portafolio con acciones y bonos
 const portfolio = {
   Acciones: {
     AR123: {
@@ -34,14 +36,16 @@ const portfolio = {
   },
 };
 
+// Preguntas frecuentes
 const preguntas = {
   1: "Como transferir dinero?",
   2: "Como realizar un pago?",
-  3: "Como realizar un préstamo?",
-  4: "Como realizar una inversión?",
+  3: "Como realizar un préstamo?",
+  4: "Como realizar una inversión?",
   5: "Como consultar mi saldo?",
 };
 
+// Información de contacto
 const contactos = {
   Telefono: "tel:6031112298",
   Email: "mailto:JY4yQ@example.com",
@@ -50,6 +54,7 @@ const contactos = {
   Twitter: "https://www.twitter.com",
 };
 
+// Función para mostrar el formulario de inicio de sesión
 function showLogin() {
   const seccion = document.getElementById("login");
   seccion.className = "login";
@@ -59,6 +64,7 @@ function showLogin() {
   hideView(seccion);
   seccion.innerHTML = "";
 
+  // Creación de elementos HTML para el formulario de inicio de sesión
   let titulo = document.createElement("h1");
   titulo.innerHTML = "Bienvenido a Banco Libertad";
   titulo.className = "login-h1";
@@ -91,6 +97,7 @@ function showLogin() {
   let boton = document.createElement("button");
   boton.innerHTML = "Iniciar Sesión";
 
+  // Función de click del botón de inicio de sesión
   boton.onclick = function (event) {
     event.preventDefault(); // Esto evita que la página se recargue
     if (username.value == "juan" && password.value == "juan") {
@@ -114,6 +121,7 @@ function showLogin() {
   seccion.appendChild(login);
 }
 
+// Función para mostrar la posición consolidada del usuario
 function showPosition() {
   let position = document.getElementById("position");
   position.innerHTML = "";
@@ -148,6 +156,7 @@ function showPosition() {
   }
 }
 
+// Función para ocultar vistas
 function hideView(visible) {
   const position = document.getElementById("position");
   position.classList.replace("position", "hide");
@@ -164,13 +173,16 @@ function hideView(visible) {
   visible.classList.replace("hide", visible.id);
 }
 
+// Función para mostrar opciones de préstamos
 function showLoans() {
   const loans = document.getElementById("loans");
   loans.innerHTML = "";
   hideView(loans);
   let h2 = document.createElement("h2");
   h2.innerHTML = "Prestamos";
-  loans.appendChild(h2);  
+  loans.appendChild(h2);
+
+  // Recorre los tipos de préstamos y crea elementos HTML para cada uno
   for (let prestamo in prestamos) {
     let article = document.createElement("article");
     article.className = "loans-article";
@@ -224,9 +236,9 @@ function showLoans() {
     article.appendChild(boton);
     loans.appendChild(article);
   }
- 
 }
 
+// Función para calcular un préstamo y mostrar información
 function loan(tasa, monto, plazo) {
   let tasaConvertida = tasa / 100 / 12;
   let cuota =
@@ -249,6 +261,7 @@ function loan(tasa, monto, plazo) {
   );
 }
 
+// Función para mostrar opciones de inversión
 function showInvestments() {
   const investments = document.getElementById("investments");
   investments.innerHTML = "";
@@ -289,6 +302,8 @@ function showInvestments() {
     }
   }
 }
+
+// Función para comprar una inversión
 function buyInvestment(inver, cant) {
   for (let inversion in portfolio) {
     for (let investment in portfolio[inversion]) {
@@ -306,6 +321,7 @@ function buyInvestment(inver, cant) {
   }
 }
 
+// Función para mostrar las tarjetas disponibles
 function showCards() {
   const seccion = document.getElementById("cards");
   seccion.innerHTML = "";
@@ -355,6 +371,7 @@ function showCards() {
   }
 }
 
+// Función para mostrar la sección de ayuda
 function showHelp() {
   const help = document.getElementById("help");
   help.innerHTML = "";
@@ -405,7 +422,7 @@ function showHelp() {
   });
   article.appendChild(frecuentes);
   let linkContacto = document.createElement("h3");
-  linkContacto.innerHTML = "Contáctanos";
+  linkContacto.innerHTML = "Contáctanos";
   linkContacto.id = "help-article-h3";
   linkContacto.className = "help-article-h3";
   let contacto = document.createElement("nav");
@@ -432,6 +449,7 @@ function showHelp() {
   help.appendChild(article);
 }
 
+// Función para mostrar la barra de navegación
 function showNav() {
   const navbarHeader = document.getElementById("navbar-header");
   navbarHeader.classList.replace("hide", "navbar-header");
@@ -443,6 +461,7 @@ function showNav() {
   footerContact.classList.replace("hide", "footer-contact");
 }
 
+// Función para ocultar la barra de navegación
 function hideNav() {
   const navbarHeader = document.getElementById("navbar-header");
   navbarHeader.classList.replace("navbar-header", "hide");
@@ -454,10 +473,13 @@ function hideNav() {
   footerContact.classList.replace("footer-contact", "hide");
 }
 
+// Función para cerrar sesión
 function logOut() {
   sessionStorage.removeItem("usuario");
   const mainElement = document.getElementById("main");
   mainElement.classList.remove("mainNormal");
   showLogin();
 }
+
+// Inicia la aplicación mostrando la pantalla de inicio de sesión
 showLogin();

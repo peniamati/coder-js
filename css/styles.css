@@ -202,6 +202,7 @@ button:hover {
   color: black;
 }
 
+/* Estilos para la clase .mainNormal */
 .mainNormal {
   display: flex;
   flex-wrap: wrap;
@@ -213,10 +214,12 @@ button:hover {
   margin-bottom: 90px;
 }
 
+/* Estilos para la clase .hide (oculta elementos) */
 .hide {
   display: none;
 }
 
+/* Estilos para la clase .position */
 .position {
   display: flex;
   flex-wrap: wrap;
@@ -248,6 +251,7 @@ button:hover {
   margin-left: auto;
 }
 
+/* Estilos para la clase .cards */
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -289,6 +293,7 @@ button:hover {
   color: black;
 }
 
+/* Estilos para la clase .investments */
 .investments {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -336,6 +341,7 @@ button:hover {
   margin-bottom: 1em;
 }
 
+/* Estilos para la clase .loans */
 .loans {
   display: flex;
   flex-wrap: wrap;
@@ -394,6 +400,7 @@ button:hover {
   display: inline;
 }
 
+/* Estilos para la clase .help */
 .help {
   display: flex;
   flex-wrap: wrap;
@@ -404,9 +411,9 @@ button:hover {
   align-items: center;
   flex-direction: column;
   width: 80%;
-  margin: 0 auto;
-  text-align: left;
-  padding: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
   border: 1px solid black;
 }
 .help-h2 {
