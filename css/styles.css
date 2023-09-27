@@ -35,6 +35,9 @@ header img {
   align-items: center;
   width: 100%;
   list-style: none;
+  padding: 0;
+  margin-top: 1em;
+  margin-bottom: 0;
 }
 .navbar-header ul li {
   display: inline;
@@ -51,7 +54,7 @@ header img {
 .navbar-lateral {
   background-color: #2869ab;
   width: 180px;
-  top: 148px;
+  top: 170px;
   position: fixed;
   height: 100vh;
   border-right: 1px solid black;
@@ -164,6 +167,8 @@ header img {
   justify-content: space-evenly;
   align-items: center;
   list-style: none;
+  padding: 0;
+  margin-bottom: 0;
 }
 .footer-nav ul li a {
   color: white;
@@ -180,6 +185,8 @@ header img {
   justify-content: space-evenly;
   align-items: center;
   list-style: none;
+  padding: 0;
+  margin-bottom: 0;
 }
 .footer-contact ul li a {
   color: white;
@@ -209,9 +216,9 @@ button:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 148px;
+  margin-top: 170px;
   margin-left: 181px;
-  margin-bottom: 90px;
+  margin-bottom: 136px;
 }
 
 /* Estilos para la clase .hide (oculta elementos) */
@@ -461,6 +468,7 @@ button:hover {
 }
 .help-article-contact-ul {
   list-style: none;
+  padding: 0;
 }
 .help-article-contact-ul-li {
   text-align: center;

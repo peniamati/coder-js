@@ -1,9 +1,9 @@
 /* Estilos para la clase .mainNormal */
 .mainNormal {
   @include contenedor-flex;
-  margin-top: 148px;
+  margin-top: 170px;
   margin-left: 181px;
-  margin-bottom: 90px;
+  margin-bottom: 136px;
 }
 
 /* Estilos para la clase .hide (oculta elementos) */
@@ -234,6 +234,7 @@
     &-contact {
       &-ul {
         list-style: none;
+        padding: 0;
         &-li {
           text-align: center;
           margin-bottom: 1em;

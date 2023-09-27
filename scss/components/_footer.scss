@@ -16,6 +16,8 @@
     & ul{
       @include contenedor-flex(column, space-evenly, center);
       list-style: none;
+      padding: 0;
+      margin-bottom: 0;
       & li{
         & a{
           color: white;
@@ -32,6 +34,8 @@
     & ul{
       @include contenedor-flex(column, space-evenly, center);
       list-style: none;
+      padding: 0;
+      margin-bottom: 0;
       & li{
         & a{
           color: white;

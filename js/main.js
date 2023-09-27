@@ -226,8 +226,10 @@ function showLoans() {
     }
     divMonto.appendChild(monto);
     let boton = document.createElement("button");
-    boton.innerHTML = "Confirmar";
-    boton.onclick = function () {
+    boton.innerText = "Confirmar";
+    boton.className = "btn btn-warning";
+    boton.id = "loans-article-btn";
+    boton.onclick = () => {
       loan(tasa.value, monto.value, plazo.value);
     };
     article.appendChild(tasa);
@@ -245,20 +247,42 @@ function loan(tasa, monto, plazo) {
     (monto * tasaConvertida) / (1 - Math.pow(1 + tasaConvertida, -plazo));
   let deuda = cuota * plazo;
 
-  alert("Prestamo solicitado con exito!");
+  Swal.fire({
+    title: "Préstamo solicitado con éxito!",
+    html: `
+      Tasa: ${tasa} %<br>
+      Monto: $${monto}<br>
+      Plazo: ${plazo} meses<br>
+      Cuota: $${cuota.toFixed(2)}<br>
+      Deuda: $${deuda.toFixed(2)}
+    `,
+    icon: "success",
+  });
 
-  alert(
-    "Tasa: " +
-      tasa +
-      " %\nMonto: $" +
-      monto +
-      "\nPlazo: " +
-      plazo +
-      " meses\nCuota: $" +
-      cuota.toFixed(2) +
-      "\nDeuda: $" +
-      deuda.toFixed(2)
-  );
+  // Prepare data for the POST request
+  const postData = {
+    tasa: tasa,
+    monto: monto,
+    plazo: plazo,
+    cuota: cuota.toFixed(2),
+    deuda: deuda.toFixed(2),
+  };
+
+  // Send the POST request
+  // fetch("/your-server-endpoint", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(postData),
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log("Success:", data);
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //   });
 }
 
 // Función para mostrar opciones de inversión
@@ -289,7 +313,10 @@ function showInvestments() {
         "Cantidad: " + portfolio[investment][inversion]["cantidad"];
       cantidad.value = portfolio[investment][inversion]["cantidad"];
       let boton = document.createElement("button");
-      boton.innerHTML = "Comprar";
+      boton.innerText = "Comprar";
+      boton.className = "btn btn-warning";
+      boton.id = "investments-section-article-btn";
+      boton.value = inversion;
       boton.onclick = function () {
         buyInvestment(inversion, cantidad.value);
       };
@@ -311,15 +338,58 @@ function buyInvestment(inver, cant) {
         if (cant > 0 && cant <= portfolio[inversion][investment]["cantidad"]) {
           portfolio[inversion][investment]["cantidad"] =
             portfolio[inversion][investment]["cantidad"] - cant;
-          alert("Compra exitosa");
+
+          // Enviar la solicitud POST para actualizar la inversión utilizando el método update
+          // fetch('/update_investment', {
+          //   method: 'POST',
+          //   headers: {
+          //     'Content-Type': 'application/json'
+          //   },
+          //   body: JSON.stringify({
+          //     investment: inver,
+          //     newAmount: portfolio[inversion][investment]["cantidad"]
+          //   })
+          // })
+          // .then(response => response.json())
+          // .then(data => {
+          //   console.log('Respuesta del servidor:', data);})
+            Swal.fire({
+              title: "Inversión comprada con éxito!",
+              html: `
+                Inversión: ${inver}<br>
+                Cantidad: ${cant}<br>
+                Precio: $${portfolio[inversion][investment]["precio"]}<br>
+                Cantidad actual: ${portfolio[inversion][investment]["cantidad"]}
+              `,
+              icon: "success",
+            });
+          
+          // .catch(error => {
+          //   console.error('Error al actualizar inversión:', error);
+          // });
+
+          // Update the portfolio
+          sessionStorage.setItem("portfolio", JSON.stringify(portfolio));
           showInvestments();
+          return; // Importante: salir del bucle una vez que la inversión se ha encontrado y actualizado.
         } else {
-          alert("No hay suficiente cantidad");
+          Swal.fire({
+            title: "No hay suficiente cantidad disponible",
+            html: `
+              Inversión: ${inver}<br>
+              Cantidad: ${cant}<br>
+              Precio: $${portfolio[inversion][investment]["precio"]}<br>
+              Cantidad actual: ${portfolio[inversion][investment]["cantidad"]}
+            `,
+            icon: "error",
+          });
+          return; // Importante: salir del bucle si la cantidad no es válida
         }
       }
     }
   }
 }
+
 
 // Función para mostrar las tarjetas disponibles
 function showCards() {
@@ -388,7 +458,7 @@ function showHelp() {
   h3.className = "help-article-h3";
   article.appendChild(h3);
   let linkFrecuentes = document.createElement("a");
-  linkFrecuentes.innerHTML = "Preguntas frecuentes";
+  linkFrecuentes.innerHTML = "Preguntas frecuentes ˅";
   linkFrecuentes.href = "#";
   linkFrecuentes.id = "help-article-a";
   linkFrecuentes.className = "help-article-a";
@@ -415,8 +485,10 @@ function showHelp() {
   lista.style.display = "none";
   linkFrecuentes.addEventListener("click", function () {
     if (lista.style.display === "none") {
+      linkFrecuentes.innerHTML = "Preguntas frecuentes ^";
       lista.style.display = "block";
     } else {
+      linkFrecuentes.innerHTML = "Preguntas frecuentes ˅";
       lista.style.display = "none";
     }
   });

@@ -7,6 +7,9 @@
       @include contenedor-flex(row, space-evenly, center);
       width: 100%;
       list-style: none;
+      padding: 0;
+      margin-top: 1em;
+      margin-bottom: 0;
       & li{
         display: inline;
         & a{
@@ -24,7 +27,7 @@
   &-lateral{
     background-color: $background-color;
     width: 180px;
-    top: 148px;
+    top: 170px;
     position: fixed;
     height: 100vh;
     border-right: 1px solid black;
