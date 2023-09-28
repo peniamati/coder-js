@@ -24,9 +24,34 @@
     margin-bottom: 1em;
   }
   &-article {
+    @include contenedor-flex;
     width: 90%;
-    display: flex;
-    align-items: center;
+    border: 1px solid black;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    & h3 {
+      margin-bottom: 0.5em;
+    }
+    & p {
+      margin-left: auto;
+    }
+  }
+}
+
+.accounts {
+  @include contenedor-flex;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  border: 1px solid black;
+  & h2 {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  &-article {
+    @include contenedor-flex;
+    width: 90%;
     border: 1px solid black;
     margin-bottom: 1em;
     padding: 0.5em;
@@ -126,7 +151,7 @@
 /* Estilos para la clase .loans */
 .loans {
   @include contenedor-flex;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 80%;
   text-align: center;
   margin-bottom: 1em;
@@ -137,7 +162,7 @@
   }
   &-article {
     @include contenedor-grid;
-    width: 50%;
+    width: 40%;
     justify-self: center;
     border: 1px solid black;
     margin-bottom: 1em;

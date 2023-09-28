@@ -56,8 +56,7 @@ header img {
   width: 180px;
   top: 170px;
   position: fixed;
-  height: 100vh;
-  border-right: 1px solid black;
+  height: 70vh;
 }
 .navbar-lateral ul {
   padding: 0;
@@ -244,9 +243,12 @@ button:hover {
   margin-bottom: 1em;
 }
 .position-article {
-  width: 90%;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  width: 90%;
   border: 1px solid black;
   margin-bottom: 1em;
   padding: 0.5em;
@@ -255,6 +257,40 @@ button:hover {
   margin-bottom: 0.5em;
 }
 .position-article p {
+  margin-left: auto;
+}
+
+.accounts {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  border: 1px solid black;
+}
+.accounts h2 {
+  width: 100%;
+  margin-bottom: 1em;
+}
+.accounts-article {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  border: 1px solid black;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+.accounts-article h3 {
+  margin-bottom: 0.5em;
+}
+.accounts-article p {
   margin-left: auto;
 }
 
@@ -355,7 +391,7 @@ button:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 80%;
   text-align: center;
   margin-bottom: 1em;
@@ -369,7 +405,7 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
-  width: 50%;
+  width: 40%;
   justify-self: center;
   border: 1px solid black;
   margin-bottom: 1em;

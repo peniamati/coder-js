@@ -61,7 +61,7 @@ function showLogin() {
   const mainElement = document.getElementById("main");
   mainElement.classList.add("mainLogin");
   hideNav();
-  hideView(seccion);
+  hideView(seccion, false);
   seccion.innerHTML = "";
 
   // Creación de elementos HTML para el formulario de inicio de sesión
@@ -123,12 +123,23 @@ function showLogin() {
 
 // Función para mostrar la posición consolidada del usuario
 function showPosition() {
-  let position = document.getElementById("position");
+  const position = document.getElementById("position");
   position.innerHTML = "";
-  hideView(position);
   let h2 = document.createElement("h2");
-  h2.innerHTML = "Posicion consolidada";
+  h2.innerHTML = "Posicion Consolidada";
   position.appendChild(h2);
+  showAccounts();
+  showCards();
+  hideView(position, true);
+}
+
+function showAccounts() {
+  let accounts = document.getElementById("accounts");
+  accounts.innerHTML = "";
+  hideView(accounts, false);
+  let h2 = document.createElement("h2");
+  h2.innerHTML = "Cuentas";
+  accounts.appendChild(h2);
   let usuario = sessionStorage.getItem("usuario");
   let cuentas;
   if (usuario == "juan") {
@@ -138,7 +149,7 @@ function showPosition() {
   }
   for (let cuenta in cuentas) {
     let article = document.createElement("article");
-    article.className = "position-article";
+    article.className = "accounts-article";
     article.innerHTML = "";
     let h3 = document.createElement("h3");
     h3.innerHTML = cuenta;
@@ -152,14 +163,16 @@ function showPosition() {
     article.appendChild(tipo);
     article.appendChild(detalles);
     article.appendChild(balance);
-    position.appendChild(article);
+    accounts.appendChild(article);
   }
 }
 
 // Función para ocultar vistas
-function hideView(visible) {
+function hideView(visible, isPosition) {
   const position = document.getElementById("position");
   position.classList.replace("position", "hide");
+  const accounts = document.getElementById("accounts");
+  accounts.classList.replace("accounts", "hide");
   const cards = document.getElementById("cards");
   cards.classList.replace("cards", "hide");
   const loans = document.getElementById("loans");
@@ -170,14 +183,20 @@ function hideView(visible) {
   help.classList.replace("help", "hide");
   const login = document.getElementById("login");
   login.classList.replace("login", "hide");
-  visible.classList.replace("hide", visible.id);
+  if (!isPosition) {
+    visible.classList.replace("hide", visible.id);
+  } else{
+    accounts.classList.replace("hide", "accounts");
+    cards.classList.replace("hide", "cards");
+  }
 }
+
 
 // Función para mostrar opciones de préstamos
 function showLoans() {
   const loans = document.getElementById("loans");
   loans.innerHTML = "";
-  hideView(loans);
+  hideView(loans, false);
   let h2 = document.createElement("h2");
   h2.innerHTML = "Prestamos";
   loans.appendChild(h2);
@@ -283,13 +302,28 @@ function loan(tasa, monto, plazo) {
   //   .catch((error) => {
   //     console.error("Error:", error);
   //   });
+
+  // Eliminar préstamo de la lista de préstamos
+  // for (let prestamo in prestamos) {
+  //   if (
+  //     prestamos[prestamo]["tasa"] == tasa &&
+  //     prestamos[prestamo]["plazo"] == plazo &&
+  //     prestamos[prestamo]["monto"] == monto
+  //   ) {
+  //     prestamos.splice(prestamo, 1);
+  //     break;
+  //   }
+  // }
+
+  // Recargar la vista de préstamos
+  showLoans();
 }
 
 // Función para mostrar opciones de inversión
 function showInvestments() {
   const investments = document.getElementById("investments");
   investments.innerHTML = "";
-  hideView(investments);
+  hideView(investments, false);
   let h2 = document.createElement("h2");
   h2.innerHTML = "Inversiones";
   investments.appendChild(h2);
@@ -395,7 +429,7 @@ function buyInvestment(inver, cant) {
 function showCards() {
   const seccion = document.getElementById("cards");
   seccion.innerHTML = "";
-  hideView(cards);
+  hideView(cards, false);
   let h2 = document.createElement("h2");
   h2.innerHTML = "Tarjetas";
   seccion.appendChild(h2);
@@ -445,7 +479,7 @@ function showCards() {
 function showHelp() {
   const help = document.getElementById("help");
   help.innerHTML = "";
-  hideView(help);
+  hideView(help, false);
   let h2 = document.createElement("h2");
   h2.innerHTML = "Ayuda";
   h2.className = "help-h2";
