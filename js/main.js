@@ -399,7 +399,7 @@ function showCards() {
     h3.innerHTML = card;
     article.appendChild(h3);
     let img = document.createElement("img");
-    img.src = "./img/" + card + ".jpg";
+    img.src = tarjetas[card]["img"];
     article.appendChild(img);
     let p = document.createElement("p");
     p.innerHTML = tarjetas[card]["number"];
