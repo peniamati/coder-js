@@ -37,12 +37,12 @@
   "tarjetasJuan": {
     "Mastercard": {
       "number": "**** **** **** 4321",
-      "img": "../img/mastercard.jpg",
+      "img": "./img/mastercard.jpg",
       "opciones": ["Pagar Tarjeta", "Aumentar Limite", "Dar de baja"]
     },
     "Visa": {
       "number": "**** **** **** 4321",
-      "img": "../img/visa.jpg",
+      "img": "./img/visa.jpg",
       "opciones": ["Pagar Tarjeta", "Aumentar Limite", "Dar de baja"]
     }
   }
