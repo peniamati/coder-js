@@ -13,12 +13,12 @@
   "tarjetasPepe": {
     "Mastercard": {
       "number": "**** **** **** 1234",
-      "img": "./img/mastercard.jpg",
+      "img": "https://i.ibb.co/j3kQJJC/mastercard.jpg",
       "opciones": ["Pagar Tarjeta", "Aumentar Limite", "Dar de baja"]
     },
     "Visa": {
       "number": "**** **** **** 1234",
-      "img": "./img/visa.jpg",
+      "img": "https://i.ibb.co/gPGxFtJ/visa.png",
       "opciones": ["Pagar Tarjeta", "Aumentar Limite", "Dar de baja"]
     }
   },
@@ -37,12 +37,12 @@
   "tarjetasJuan": {
     "Mastercard": {
       "number": "**** **** **** 4321",
-      "img": "./img/mastercard.jpg",
+      "img": "https://i.ibb.co/j3kQJJC/mastercard.jpg",
       "opciones": ["Pagar Tarjeta", "Aumentar Limite", "Dar de baja"]
     },
     "Visa": {
       "number": "**** **** **** 4321",
-      "img": "./img/visa.jpg",
+      "img": "https://i.ibb.co/gPGxFtJ/visa.png",
       "opciones": ["Pagar Tarjeta", "Aumentar Limite", "Dar de baja"]
     }
   }
