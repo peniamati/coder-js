@@ -1,58 +1,50 @@
-// Definición de tipos de préstamos con tasas, plazos y montos
-const prestamos = {
-  Personal: {
-    tasa: 120,
-    plazo: [6, 12, 24],
-    monto: [100000, 150000, 200000],
-  },
-  Hipotecario: {
-    tasa: 150,
-    plazo: [24, 36, 48],
-    monto: [1500000, 2000000, 2500000],
-  },
-};
+// Autor: Matias Peña
 
-// Definición de un portafolio con acciones y bonos
-const portfolio = {
-  Acciones: {
-    AR123: {
-      precio: 1234,
-      cantidad: 1,
-    },
-    AR1235: {
-      precio: 1234,
-      cantidad: 1,
-    },
-  },
-  Bonos: {
-    Bonar123: {
-      precio: 1234,
-      cantidad: 1,
-    },
-    Bonar1235: {
-      precio: 1234,
-      cantidad: 1,
-    },
-  },
-};
+let cuentasPepe = {};
+let cuentasJuan = {};
+let tarjetasPepe = {};
+let tarjetasJuan = {};
+let prestamos = {};
+let portfolio = {};
+let ayuda = {};
 
-// Preguntas frecuentes
-const preguntas = {
-  1: "Como transferir dinero?",
-  2: "Como realizar un pago?",
-  3: "Como realizar un préstamo?",
-  4: "Como realizar una inversión?",
-  5: "Como consultar mi saldo?",
-};
+try{
+  fetch("./cuentas.json")
+  .then(response => response.json())
+  .then(data => {
+    cuentasPepe = data.cuentasPepe;
+    cuentasJuan = data.cuentasJuan;
+    tarjetasPepe = data.tarjetasPepe;
+    tarjetasJuan = data.tarjetasJuan;
+  })
+}
+catch{
+  console.log("No se pudo cargar los datos")
+}
 
-// Información de contacto
-const contactos = {
-  Telefono: "tel:6031112298",
-  Email: "mailto:JY4yQ@example.com",
-  Facebook: "https://www.facebook.com",
-  Instagram: "https://www.instagram.com",
-  Twitter: "https://www.twitter.com",
-};
+try{
+  fetch("./divisas.json")
+  .then(response => response.json())
+  .then(data => {
+    prestamos = data.prestamos;
+    portfolio = data.portfolio;
+  })
+}
+catch{
+  console.log("No se pudo cargar los datos")
+}
+
+try{
+  fetch("./ayuda.json")
+  .then(response => response.json())
+  .then(data => {
+    ayuda = data;
+  })
+}
+catch{
+  console.log("No se pudo cargar los datos")
+}
+
 
 // Función para mostrar el formulario de inicio de sesión
 function showLogin() {
@@ -111,7 +103,7 @@ function showLogin() {
       showNav();
       showPosition();
     } else {
-      alert("Usuario o contraseña incorrectos");
+      Swal.fire("Error", "Usuario o contraseña incorrectos", "error");
     }
   };
 
@@ -125,6 +117,9 @@ function showLogin() {
 function showPosition() {
   const position = document.getElementById("position");
   position.innerHTML = "";
+  let bienvenido = document.createElement("h2");
+  bienvenido.innerHTML = sessionStorage.getItem("usuario");
+  position.appendChild(bienvenido);
   let h2 = document.createElement("h2");
   h2.innerHTML = "Posicion Consolidada";
   position.appendChild(h2);
@@ -133,6 +128,7 @@ function showPosition() {
   hideView(position, true);
 }
 
+// Funcion para mostrar las cuentas del usuario
 function showAccounts() {
   let accounts = document.getElementById("accounts");
   accounts.innerHTML = "";
@@ -185,12 +181,11 @@ function hideView(visible, isPosition) {
   login.classList.replace("login", "hide");
   if (!isPosition) {
     visible.classList.replace("hide", visible.id);
-  } else{
+  } else {
     accounts.classList.replace("hide", "accounts");
     cards.classList.replace("hide", "cards");
   }
 }
-
 
 // Función para mostrar opciones de préstamos
 function showLoans() {
@@ -269,7 +264,7 @@ function loan(tasa, monto, plazo) {
   Swal.fire({
     title: "Préstamo solicitado con éxito!",
     html: `
-      Tasa: ${tasa} %<br>
+      Tasa: ${tasa}%<br>
       Monto: $${monto}<br>
       Plazo: ${plazo} meses<br>
       Cuota: $${cuota.toFixed(2)}<br>
@@ -387,17 +382,17 @@ function buyInvestment(inver, cant) {
           // .then(response => response.json())
           // .then(data => {
           //   console.log('Respuesta del servidor:', data);})
-            Swal.fire({
-              title: "Inversión comprada con éxito!",
-              html: `
+          Swal.fire({
+            title: "Inversión comprada con éxito!",
+            html: `
                 Inversión: ${inver}<br>
                 Cantidad: ${cant}<br>
                 Precio: $${portfolio[inversion][investment]["precio"]}<br>
                 Cantidad actual: ${portfolio[inversion][investment]["cantidad"]}
               `,
-              icon: "success",
-            });
-          
+            icon: "success",
+          });
+
           // .catch(error => {
           //   console.error('Error al actualizar inversión:', error);
           // });
@@ -423,7 +418,6 @@ function buyInvestment(inver, cant) {
     }
   }
 }
-
 
 // Función para mostrar las tarjetas disponibles
 function showCards() {

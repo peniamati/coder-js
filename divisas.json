@@ -1,0 +1,36 @@
+{
+  "prestamos": {
+    "Personal": {
+      "tasa": 120,
+      "plazo": [6, 12, 24],
+      "monto": [100000, 150000, 200000]
+    },
+    "Hipotecario": {
+      "tasa": 150,
+      "plazo": [24, 36, 48],
+      "monto": [1500000, 2000000, 2500000]
+    }
+  },
+  "portfolio": {
+    "Acciones": {
+      "AR123": {
+        "precio": 1234,
+        "cantidad": 1
+      },
+      "AR1235": {
+        "precio": 1234,
+        "cantidad": 1
+      }
+    },
+    "Bonos": {
+      "Bonar123": {
+        "precio": 1234,
+        "cantidad": 1
+      },
+      "Bonar1235": {
+        "precio": 1234,
+        "cantidad": 1
+      }
+    }
+  }
+}

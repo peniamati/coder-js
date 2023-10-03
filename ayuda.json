@@ -1,0 +1,16 @@
+{
+  "preguntas": {
+    "1": "Como transferir dinero?",
+    "2": "Como realizar un pago?",
+    "3": "Como realizar un préstamo?",
+    "4": "Como realizar una inversión?",
+    "5": "Como consultar mi saldo?"
+  },
+  "contactos": {
+    "Telefono": "tel:6031112298",
+    "Email": "mailto:JY4yQ@example.com",
+    "Facebook": "https://www.facebook.com",
+    "Instagram": "https://www.instagram.com",
+    "Twitter": "https://www.twitter.com"
+  }
+}

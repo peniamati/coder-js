@@ -54,7 +54,7 @@ header img {
 .navbar-lateral {
   background-color: #2869ab;
   width: 180px;
-  top: 170px;
+  top: 164px;
   position: fixed;
   height: 70vh;
 }
@@ -83,6 +83,7 @@ header img {
   justify-content: center;
   align-items: center;
   margin-top: 148px;
+  margin-bottom: 100px;
   margin-left: 0;
 }
 
