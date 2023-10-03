@@ -1,14 +1,17 @@
 // Autor: Matias Peña
 
+// Definición de objetos para almacenar datos
 let cuentasPepe = {};
 let cuentasJuan = {};
 let tarjetasPepe = {};
 let tarjetasJuan = {};
 let prestamos = {};
 let portfolio = {};
-let ayuda = {};
+let preguntas = {};
+let contactos = {};
 
 try{
+  // Carga de datos desde el archivo cuentas.json
   fetch("./cuentas.json")
   .then(response => response.json())
   .then(data => {
@@ -23,6 +26,7 @@ catch{
 }
 
 try{
+  // Carga de datos desde el archivo divisas.json
   fetch("./divisas.json")
   .then(response => response.json())
   .then(data => {
@@ -35,16 +39,17 @@ catch{
 }
 
 try{
+  // Carga de datos desde el archivo ayuda.json
   fetch("./ayuda.json")
   .then(response => response.json())
   .then(data => {
-    ayuda = data;
+    preguntas = data.preguntas;
+    contactos = data.contactos;
   })
 }
 catch{
   console.log("No se pudo cargar los datos")
 }
-
 
 // Función para mostrar el formulario de inicio de sesión
 function showLogin() {
@@ -282,34 +287,6 @@ function loan(tasa, monto, plazo) {
     deuda: deuda.toFixed(2),
   };
 
-  // Send the POST request
-  // fetch("/your-server-endpoint", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(postData),
-  // })
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log("Success:", data);
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error:", error);
-  //   });
-
-  // Eliminar préstamo de la lista de préstamos
-  // for (let prestamo in prestamos) {
-  //   if (
-  //     prestamos[prestamo]["tasa"] == tasa &&
-  //     prestamos[prestamo]["plazo"] == plazo &&
-  //     prestamos[prestamo]["monto"] == monto
-  //   ) {
-  //     prestamos.splice(prestamo, 1);
-  //     break;
-  //   }
-  // }
-
   // Recargar la vista de préstamos
   showLoans();
 }
@@ -368,20 +345,6 @@ function buyInvestment(inver, cant) {
           portfolio[inversion][investment]["cantidad"] =
             portfolio[inversion][investment]["cantidad"] - cant;
 
-          // Enviar la solicitud POST para actualizar la inversión utilizando el método update
-          // fetch('/update_investment', {
-          //   method: 'POST',
-          //   headers: {
-          //     'Content-Type': 'application/json'
-          //   },
-          //   body: JSON.stringify({
-          //     investment: inver,
-          //     newAmount: portfolio[inversion][investment]["cantidad"]
-          //   })
-          // })
-          // .then(response => response.json())
-          // .then(data => {
-          //   console.log('Respuesta del servidor:', data);})
           Swal.fire({
             title: "Inversión comprada con éxito!",
             html: `
@@ -392,10 +355,6 @@ function buyInvestment(inver, cant) {
               `,
             icon: "success",
           });
-
-          // .catch(error => {
-          //   console.error('Error al actualizar inversión:', error);
-          // });
 
           // Update the portfolio
           sessionStorage.setItem("portfolio", JSON.stringify(portfolio));
@@ -576,6 +535,7 @@ function hideNav() {
 // Función para cerrar sesión
 function logOut() {
   sessionStorage.removeItem("usuario");
+  sessionStorage.removeItem("portfolio");
   const mainElement = document.getElementById("main");
   mainElement.classList.remove("mainNormal");
   showLogin();
